@@ -3,3 +3,4 @@ venv
 venv_windows
 node_modules
 .ipynb_checkpoints
+install
