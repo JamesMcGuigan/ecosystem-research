@@ -2,12 +2,24 @@
 
 ## Install
 
+## Notes
+
+List of available jupyter kernels
+- https://github.com/jupyter/jupyter/wiki/Jupyter-kernels
+
 #### Juypter
+Install
 ```bash
 cd juypter
 ./install.sh
 jupyter notebook --generate-config
 ```
+Run
+```bash
+source venv/bin/activate
+juypter lab
+```
+
 
 #### iJava
 - https://github.com/SpencerPark/IJava
@@ -22,13 +34,9 @@ sudo apt update
 sudo apt install gradle
 ```
 
-## Run
+# Install SBT - https://stackoverflow.com/questions/35529913/how-to-install-sbt-on-ubuntu-debian-with-apt-get
 ```bash
-source venv/bin/activate
-juypter lab
+cd install
+wget http://dl.bintray.com/sbt/debian/sbt-1.2.6.deb 
+sudo dpkg -i sbt-1.2.6.deb 
 ```
-
-## Notes
-
-List of available jupyter kernels
-- https://github.com/jupyter/jupyter/wiki/Jupyter-kernels
