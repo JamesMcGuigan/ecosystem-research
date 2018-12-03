@@ -1,0 +1,33 @@
+#
+# This file is input for pip-compile. Update this file, then run:
+#
+#    pip-compile
+#    pip-sync
+#
+# Or to check for version bump upgrades:
+#
+#    pip-review
+#
+
+# Python Buildchain Dependencies
+wheel
+pip-review
+pip-tools
+
+# Tests
+nose
+
+# SciPy - https://www.scipy.org/install.html
+ipython
+jupyter
+jupyterlab
+numpy
+pandas
+scipy
+sympy
+
+# Other useful python libraries
+matplotlib
+seaborn
+pydash
+simplejson
