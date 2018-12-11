@@ -1,4 +1,5 @@
 #!/usr/bin/env bash
+set +x
 
 # Install iJava
 # - https://github.com/SpencerPark/IJava
@@ -11,7 +12,7 @@ cd install/IJava;
 git pull;
 chmod u+x gradlew
 
-for VENV in venv/bin/activate venv_windows/Scripts/activate; do
+for VENV in ../../venv/bin/activate ../../venv_windows/Scripts/activate; do
     source $VENV;
     ./gradlew installKernel
 done;

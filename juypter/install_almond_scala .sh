@@ -1,4 +1,5 @@
 #!/usr/bin/env bash
+set +x
 
 # Install Almond Scala Kernel
 # - http://almond-sh.github.io/almond/stable/docs/quick-start-install

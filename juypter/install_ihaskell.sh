@@ -1,4 +1,5 @@
 #!/usr/bin/env bash
+set +x
 
 ### Install iHaskel
 cd $(readlink -f $(dirname $BASH_SOURCE[0]));
