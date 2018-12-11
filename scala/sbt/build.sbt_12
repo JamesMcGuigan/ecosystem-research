@@ -1,0 +1,19 @@
+name               := """number-factorization-classical"""
+version            := "1.0.0-SNAPSHOT"
+scalaVersion       := "2.12.7"
+crossScalaVersions := Seq("2.12.7")
+val projectMainClass = "com.jamesmcguigan.helloworld.Main"
+
+// resolvers += "scalaz-bintray" at "https://dl.bintray.com/scalaz/releases"
+// addSbtPlugin("com.eed3si9n" % "sbt-assembly" % "0.14.4")  // BROKEN
+
+//*******************************
+// Maven settings
+//*******************************
+
+publishMavenStyle := true
+organization := "com.jamesmcguigan"
+description  := ""
+homepage     := Some(url("https://github.com/JamesMcGuigan/ecosystem-research"))
+licenses     := Seq()
+pomIncludeRepository := { _ => false }
