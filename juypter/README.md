@@ -40,3 +40,9 @@ cd install
 wget http://dl.bintray.com/sbt/debian/sbt-1.2.6.deb 
 sudo dpkg -i sbt-1.2.6.deb 
 ```
+
+
+# Haskel - https://github.com/gibiansky/IHaskell
+```bash
+sudo apt-get install -y python3-pip git libtinfo-dev libzmq3-dev libcairo2-dev libpango1.0-dev libmagic-dev libblas-dev liblapack-dev
+```

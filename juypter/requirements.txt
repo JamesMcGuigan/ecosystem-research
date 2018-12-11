@@ -49,7 +49,7 @@ pygments==2.3.0           # via ipython, jupyter-console, nbconvert, qtconsole
 pyparsing==2.3.0          # via matplotlib, packaging
 python-dateutil==2.7.5    # via jupyter-client, matplotlib, pandas
 pytz==2018.7              # via pandas
-pywinpty==0.5.4           # via terminado
+pywinpty==0.5.5           # via terminado
 pyzmq==17.1.2             # via jupyter-client, notebook
 qtconsole==4.4.3          # via jupyter
 scipy==1.1.0
