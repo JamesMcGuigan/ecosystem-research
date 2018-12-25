@@ -1,0 +1,4 @@
+.idea
+*.iml
+awka/install
+pawk/venv*
