@@ -1,0 +1,54 @@
+<project>
+
+    <path id="classpath">
+        <pathelement location="build/classes"/>
+        <pathelement location="src/main/resources"/>
+        <pathelement location="lib/junit-4.12.jar"/>
+        <pathelement location="lib/ant-junit-1.8.4.jar"/>
+        <pathelement location="lib/mockito-all-1.10.19.jar"/>
+    </path>
+
+    <target name="clean">
+        <delete dir="build"/>
+    </target>
+
+    <target name="compile">
+        <mkdir dir="build/classes"/>
+
+        <javac srcdir="src/main/java" destdir="build/classes" includeantruntime="false">
+            <classpath refid="classpath"/>
+        </javac>
+        <javac srcdir="src/test/java" destdir="build/classes" includeantruntime="false">
+            <classpath refid="classpath"/>
+        </javac>
+    </target>
+
+    <target name="jar">
+        <mkdir dir="build/jar"/>
+        <jar destfile="build/jar/JavaSandbox.jar" basedir="build/classes">
+            <manifest>
+                <attribute name="Main-Class" value="com.company.Main"/>
+            </manifest>
+        </jar>
+    </target>
+
+    <target name="run">
+        <java jar="build/jar/JavaSandbox.jar" fork="true"/>
+    </target>
+
+    <target name="test" depends="compile">
+        <junit printsummary="yes" fork="yes" haltonfailure="yes">
+            <classpath refid="classpath"/>
+
+            <formatter type="plain" usefile="false" /> <!-- to screen -->
+
+            <batchtest>
+                <fileset dir="src/test/java">
+                    <include name="**/*Test*" />
+                </fileset>
+            </batchtest>
+
+        </junit>
+    </target>
+
+</project>
