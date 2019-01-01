@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-set +x
+set -x
 
 # Install iJava
 # - https://github.com/SpencerPark/IJava
