@@ -10,7 +10,8 @@ lazy val root = (project in file(".")).
     mainClass in assembly := Some("com.jamesmcguigan.helloworld.Main"),
     // assemblyJarName in assembly := "helloworld.jar",
     name := "sbt-helloworld",
-    libraryDependencies += scalaTest % Test
-  )
+    libraryDependencies += scalaTest % Test,
+    libraryDependencies += "com.typesafe" % "config" % "1.3.4",
+)
 
 mainClass in (Compile, run) := Some("com.jamesmcguigan.helloworld.Main")

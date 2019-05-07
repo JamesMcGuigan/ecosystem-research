@@ -15,6 +15,7 @@ sbt run
 ```bash
 sbt "show discoveredMainClasses"
 sbt "runMain com.jamesmcguigan.helloworld.Main"
+sbt "runMain com.jamesmcguigan.properties.Main"
 ```
 
 #### scala + scalac 
