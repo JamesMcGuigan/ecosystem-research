@@ -21,6 +21,8 @@ description:         Please see the README on GitHub at <https://github.com/gith
 
 dependencies:
 - base >= 4.7 && < 5
+- acme-missiles        # DOCS: https://docs.haskellstack.org/en/stable/GUIDE/#extra-deps
+
 
 library:
   source-dirs: src

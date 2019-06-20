@@ -25,3 +25,5 @@ Unread:
 - Atom: [https://atom.io/packages/ide-haskell]
 - IntelliJ: [http://haskforce.com/]
 
+#### Deployment
+- https://github.com/zeit/now-examples/pull/55/commits/3a578a130926f30d5e7eb61575a5f9360ee713a0#diff-7ffa443b950cedfb98cc524210cdd596
