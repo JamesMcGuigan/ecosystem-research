@@ -6,6 +6,7 @@
 # Haskell Compiled Files
 *.hi
 *.o
+.stack-work
 
 # IDE
 .idea
