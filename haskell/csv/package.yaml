@@ -1,4 +1,4 @@
-name:                csv
+name:                csv-tutorial
 version:             0.1.0.0
 github:              "githubuser/csv"
 license:             BSD3
@@ -21,12 +21,13 @@ description:         Please see the README on GitHub at <https://github.com/gith
 
 dependencies:
 - base >= 4.7 && < 5
+- csv
 
 library:
   source-dirs: src
 
 executables:
-  csv-exe:
+  csv-tutorial-exe:
     main:                Main.hs
     source-dirs:         app
     ghc-options:
@@ -34,10 +35,10 @@ executables:
     - -rtsopts
     - -with-rtsopts=-N
     dependencies:
-    - csv
+    - csv-tutorial
 
 tests:
-  csv-test:
+  csv-tutorial-test:
     main:                Spec.hs
     source-dirs:         test
     ghc-options:
@@ -45,4 +46,4 @@ tests:
     - -rtsopts
     - -with-rtsopts=-N
     dependencies:
-    - csv
+    - csv-tutorial
