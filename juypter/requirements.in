@@ -9,25 +9,49 @@
 #    pip-review
 #
 
-# Python Buildchain Dependencies
+### Python Buildchain Dependencies
 wheel
 pip-review
 pip-tools
+pipdeptree
 
-# Tests
-nose
 
-# SciPy - https://www.scipy.org/install.html
+### Jupyter
 ipython
 jupyter
 jupyterlab
+jupyter_contrib_nbextensions
+jupyter_nbextensions_configurator
+jupyterthemes
+
+
+### SciPy - https://www.scipy.org/install.html
 numpy
 pandas
 scipy
 sympy
 
-# Other useful python libraries
+
+### Tensorflow
+tensorflow==2.1.0
+tensorflow-gpu
+
+
+### Visualization
 matplotlib
 seaborn
-pydash
+
+
+### Utils
 simplejson
+
+
+### Functional Programming
+pyfunctional
+more-itertools
+cytoolz
+pampy
+deal
+
+### Tests
+# nose
