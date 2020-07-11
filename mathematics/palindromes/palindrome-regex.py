@@ -1,6 +1,9 @@
 # Question: https://stackoverflow.com/questions/62838784/optimize-time-space-complexity-for-solving-palindromes
 
 import re
+import time
+
+
 def longestPalindrome(string):
     for n in range(len(string)//2, -1, -1):
         # Example: re.sub(r'^.*(\w)(\w)(\w)(\w)(\w)?\3\2\1.*$', r'\1\2\3\4\3\2\1', s)
@@ -19,9 +22,18 @@ def longestPalindrome(string):
 
 
 if __name__ == '__main__':
-    print('longestPalindrome("banana")      = ', longestPalindrome("banana"))
-    print('longestPalindrome("tracecars")   = ', longestPalindrome("tracecars"))
-    print('longestPalindrome("detartrated") = ', longestPalindrome("detartrated"))
+    for sentence in [
+        "banana",
+        "tracecars",
+        "detartrated",
+        "saippuakivikauppias",
+        "this is not the palindrome you are looking for"
+    ]:
+        start_time = time.perf_counter()
+        answer     = longestPalindrome(sentence)
+        time_taken = time.perf_counter() - start_time
+        print(f'len({len(sentence):2d}) in {1000*time_taken:6.2f}ms = longestPalindrome({sentence}) == {answer}')
+
     assert longestPalindrome("banana")      == "anana"
     assert longestPalindrome("tracecars")   == "racecar"
     assert longestPalindrome("detartrated") == "detartrated"
