@@ -1,0 +1,9 @@
+[package]
+name    = "hello-rust"
+version = "0.1.0"
+authors = ["JamesMcGuigan <james.mcguigan.github@gmail.com>"]
+edition = "2018"
+
+[lib]
+name = "hello_rust"
+crate-type = ["dylib"]

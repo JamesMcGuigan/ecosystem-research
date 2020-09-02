@@ -16,7 +16,7 @@ c4lib.yourCfunctionhere(…)
 - Peter Cnudde - https://www.kaggle.com/c/connectx/discussion/179022
 
 
-# Instructions
+# C
 
 ```
 cd python/ctypes/hello_c/
@@ -26,4 +26,23 @@ python3 hello_world.py
 ```
 Hello, World!
 Answer =  42 <class 'int'>
+```
+
+# Rust
+```
+cd python/ctypes/hello_rust/
+cargo build
+python3 hello_rust_cffi.py
+python3 hello_rust_ctypes.py
+```
+
+# D
+BUG: unable to compile with pyd
+```
+brew instal dmd dub
+dub run pyd:setup
+
+cd python/ctypes/hello_d/
+dmd hello_d.d 
+
 ```
