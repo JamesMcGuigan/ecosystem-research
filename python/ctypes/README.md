@@ -17,7 +17,6 @@ c4lib.yourCfunctionhere(…)
 
 
 # C
-
 ```
 cd python/ctypes/hello_c/
 gcc hello_world.c -o hello_world.o
@@ -29,6 +28,7 @@ Answer =  42 <class 'int'>
 ```
 
 # Rust
+- DOCS: https://bheisler.github.io/post/calling-rust-in-python/
 ```
 cd python/ctypes/hello_rust/
 cargo build
@@ -36,8 +36,16 @@ python3 hello_rust_cffi.py
 python3 hello_rust_ctypes.py
 ```
 
+# GO
+- DOCS: https://stackoverflow.com/questions/56586267/calling-go-from-python
+```
+cd python/ctypes/hello_go/
+go build -o hello_go.so -buildmode=c-shared hello_go.go 
+```
+
 # D
-BUG: unable to compile with pyd
+- DOCS: https://pyd.readthedocs.io/en/latest/extend.html
+- BUG: unable to compile with pyd
 ```
 brew instal dmd dub
 dub run pyd:setup
