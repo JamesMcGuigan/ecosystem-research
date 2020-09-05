@@ -10,6 +10,8 @@ mod pointers;
 mod structs;
 mod enums;
 mod cli;
+mod borrowing;
+mod lifetimes;
 
 fn main() {
     print::run();
@@ -24,4 +26,6 @@ fn main() {
     structs::run();
     enums::run();
     cli::run();
+    borrowing::run();
+    lifetimes::run();
 }
