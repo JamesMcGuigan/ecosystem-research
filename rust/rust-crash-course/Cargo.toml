@@ -1,0 +1,18 @@
+[package]
+name = "rust-crash-course"
+version = "0.1.0"
+authors = ["JamesMcGuigan <james.mcguigan.github@gmail.com>"]
+edition = "2018"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[dependencies]
+regex = "1"
+
+
+# DOCS: https://rust-embedded.github.io/book/unsorted/speed-vs-size.html#optimize-for-speed
+[profile.release]
+# opt-level = "3"  # optimize for speed
+# opt-level = "2"  # optimize for size + speed
+# opt-level = "s"  # optimize for size
+# opt-level = "z"  # optimize more for size
