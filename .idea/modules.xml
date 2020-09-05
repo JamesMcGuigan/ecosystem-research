@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/.idea/ecosystem-research.iml" filepath="$PROJECT_DIR$/.idea/ecosystem-research.iml" />
+      <module fileurl="file://$PROJECT_DIR$/rust/rust-crash-course/rust-crash-course.iml" filepath="$PROJECT_DIR$/rust/rust-crash-course/rust-crash-course.iml" />
+    </modules>
+  </component>
+</project>
