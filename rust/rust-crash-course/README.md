@@ -1,6 +1,15 @@
 # Rust Crash Course
-- Youtube Video: https://www.youtube.com/watch?v=zF34dRivLOw
-- Rust Book: https://doc.rust-lang.org/1.30.0/book/2018-edition/index.html
+
+Based upon the following Youtube videos:
+- [Rust Crash Course | Rustlang](https://www.youtube.com/watch?v=zF34dRivLOw)
+- [Rust Ownership and Borrowing](https://www.youtube.com/watch?v=lQ7XF-6HYGc&ab_channel=DougMilford)
+- [Rust Lifetimes](https://www.youtube.com/watch?v=1QoT9fmPYr8&ab_channel=DougMilford)
+- [Intro to Rust-lang (Concurrency, Threads, Channels, Mutex and Arc)](https://www.youtube.com/watch?v=_4fSLuvPMf8&ab_channel=TensorProgramming)
+
+Rust Book: 
+- https://doc.rust-lang.org/1.30.0/book/2018-edition/index.html
+
+
 
 ## Update Rust
 ```

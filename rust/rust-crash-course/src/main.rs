@@ -12,6 +12,7 @@ mod enums;
 mod cli;
 mod borrowing;
 mod lifetimes;
+mod threads;
 
 fn main() {
     print::run();
@@ -28,4 +29,5 @@ fn main() {
     cli::run();
     borrowing::run();
     lifetimes::run();
+    threads::run();
 }
