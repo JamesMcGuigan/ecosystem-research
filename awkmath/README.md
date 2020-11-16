@@ -12,6 +12,13 @@ https://www.gnu.org/software/gawk/manual/html_node/Other-Versions.html
 - awka - AWK -> C compiler - https://sourceforge.net/projects/awka
 
 
+## .bashrc
+This is required for easy command line usage 
+```
+export AWKPATH="$HOME/code/ecosystem-research/awkmath/modules"
+export PATH="$PATH:~/code/ecosystem-research/awkmath/gawk"
+```
+
 
 ## RunAwk
 
