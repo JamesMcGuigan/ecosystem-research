@@ -3,6 +3,8 @@
 //    println!("Hello, world!");
 //}
 
+mod date;
+
 //// A Small Rust application
 // DOCS: https://www.rust-lang.org/learn/get-started
 use ferris_says::say; // from the previous step
@@ -15,4 +17,6 @@ fn main() {
 
     let mut writer = BufWriter::new(stdout.lock());
     say(out, width, &mut writer).unwrap();
+
+    date::iso2timestamp()
 }
