@@ -1,0 +1,17 @@
+<!-- This is an example of how to access a WASM file via Javascript -->
+<!-- Source: https://blog.ttulka.com/learning-webassembly-1-hello-world-of-wasm -->
+<!DOCTYPE html>
+<html lang="">
+<body>
+<div>fetch('42.wasm').exports.main() = <span id="answer"></span></div>
+<script>
+    WebAssembly
+        .instantiateStreaming(fetch('42.wasm'))
+        .then(({instance}) => {
+            let answer = instance.exports.main();
+            document.getElementById('answer').innerText = answer;
+            console.info('fetch(\'42.wasm\').exports.main() =', answer);
+        });
+</script>
+</body>
+</html>
