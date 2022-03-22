@@ -19,8 +19,8 @@ Utilities:
 
 ## Install
 ```
-sudo pacman -S wasmtime   # CLI execution 
-sudo pacman -S wabt       # wat2wasm wasm-objdump
+sudo pacman -S    wabt wasmtime wasmer  # Arch Linux
+sudo brew install wabt wasmtime wasmer  # Homebrew OSX
 ```
 
 ## Commands
@@ -61,4 +61,4 @@ wasmer      hello_world.wasm                    # execute "hello world"
 # lucet = https://github.com/bytecodealliance/lucet
 # WebAssembly Micro Runtime (WAMR) = https://github.com/bytecodealliance/wasm-micro-runtime
 ```
-- [wat/hello_world/hello_world.sh](wat/hello_world/hello_world.sh)
+- [wat/hello_world/hello_world.sh](wat/print_hello_world/hello_world.sh)
