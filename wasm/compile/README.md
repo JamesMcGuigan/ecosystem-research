@@ -1,7 +1,7 @@
 # WASM Compile Targets
 
 The following languages can compile to WASM
-- C/C++
+- C/C++ (via emscripten)
 - Rust
 - AssemblyScript (a TypeScript-like syntax)
 - Go

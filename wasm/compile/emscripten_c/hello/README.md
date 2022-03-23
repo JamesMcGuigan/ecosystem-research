@@ -1,4 +1,4 @@
-# Compile C to WASM
+# Emscripten - Compile C to WASM
 
 DOCS: https://developer.mozilla.org/en-US/docs/WebAssembly/C_to_wasm
 
