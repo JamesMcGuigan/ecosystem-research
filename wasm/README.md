@@ -15,12 +15,12 @@ Utilities:
 - WASI System Interface API - https://github.com/WebAssembly/WASI
 - WASM VM for Cloud - https://wasmedge.org/
 - IntelliJ Plugin - https://www.jetbrains.com/help/idea/webassembly-project.html
-
+- Emscripten - LLVM compiler toolchain to WebAssembly - https://emscripten.org/
 
 ## Install
 ```
-sudo pacman -S    wabt wasmtime wasmer  # Arch Linux
-sudo brew install wabt wasmtime wasmer  # Homebrew OSX
+sudo pacman -S  wabt wasmtime wasmer emscripten # Arch Linux
+brew install    wabt wasmtime wasmer emscripten # Homebrew OSX
 ```
 
 ## Commands
