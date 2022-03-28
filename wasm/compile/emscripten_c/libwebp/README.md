@@ -2,11 +2,6 @@
 
 DOCS: https://developer.mozilla.org/en-US/docs/WebAssembly/existing_C_to_wasm
 
-Install
-```
-brew install emscripten
-```
-
 Compile:
 ```
 emcc -O0 -s WASM=1 -s EXPORTED_RUNTIME_METHODS='["cwrap"]' \
