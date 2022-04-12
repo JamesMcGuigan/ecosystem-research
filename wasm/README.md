@@ -10,6 +10,7 @@ DOCS:
 - https://webassembly.org/getting-started/developers-guide/
 - https://webassembly.org/getting-started/advanced-tools/
 - https://blog.ttulka.com/learning-webassembly-series
+- https://developer.mozilla.org/en-US/docs/WebAssembly/Loading_and_running
 
 Utilities:
 - WASI System Interface API - https://github.com/WebAssembly/WASI
