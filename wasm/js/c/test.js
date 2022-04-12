@@ -2,7 +2,7 @@
 // DOCS: https://developer.mozilla.org/en-US/docs/WebAssembly/Loading_and_running
 
 // Test Static Functions
-WebAssembly.instantiateStreaming(fetch('test.c.wasm'), {}).then(wasm => {
+WebAssembly.instantiateStreaming(fetch('src/test.c.wasm'), {}).then(wasm => {
     console.warn('Test Static Functions');
 
     const { answer, squared } = wasm.instance.exports;
@@ -11,7 +11,7 @@ WebAssembly.instantiateStreaming(fetch('test.c.wasm'), {}).then(wasm => {
 });
 
 // Pass manual array as argument
-WebAssembly.instantiateStreaming(fetch('test.c.wasm'), {}).then(wasm => {
+WebAssembly.instantiateStreaming(fetch('src/test.c.wasm'), {}).then(wasm => {
     console.warn('Pass manual array as argument');
 
     const { sumArrayInt32, memory } = wasm.instance.exports
@@ -48,7 +48,7 @@ WebAssembly.instantiateStreaming(fetch('test.c.wasm'), {}).then(wasm => {
 });
 
 // Test passing int* = Int32Array() as argument
-WebAssembly.instantiateStreaming(fetch('test.c.wasm'), {}).then(wasm => {
+WebAssembly.instantiateStreaming(fetch('src/test.c.wasm'), {}).then(wasm => {
     console.warn('Test passing int* = Int32Array() as argument');
 
     const {sumArrayInt32, memory} = wasm.instance.exports
@@ -69,7 +69,7 @@ WebAssembly.instantiateStreaming(fetch('test.c.wasm'), {}).then(wasm => {
 })
 
 // Test passing long* = BigInt64Array() as argument
-WebAssembly.instantiateStreaming(fetch('test.c.wasm'), {}).then(wasm => {
+WebAssembly.instantiateStreaming(fetch('src/test.c.wasm'), {}).then(wasm => {
     console.warn('Test passing long* = BigInt64Array() as argument');
 
     const {sumArrayInt64, memory} = wasm.instance.exports
@@ -91,7 +91,7 @@ WebAssembly.instantiateStreaming(fetch('test.c.wasm'), {}).then(wasm => {
 
 
 // Test returning pointer to predefined WASM array
-WebAssembly.instantiateStreaming(fetch('test.c.wasm'), {}).then(wasm => {
+WebAssembly.instantiateStreaming(fetch('src/test.c.wasm'), {}).then(wasm => {
     console.warn('Test returning pointer to predefined WASM array');
 
     const { renderCanvas, memory } = wasm.instance.exports;
