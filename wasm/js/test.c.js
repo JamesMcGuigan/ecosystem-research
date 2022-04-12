@@ -697,6 +697,9 @@ var _sumArrayInt32 = Module["_sumArrayInt32"] = function() {
 var _sumArrayInt64 = Module["_sumArrayInt64"] = function() {
     return (_sumArrayInt64 = Module["_sumArrayInt64"] = Module["asm"]["sumArrayInt64"]).apply(null, arguments)
 };
+var _renderCanvas = Module["_renderCanvas"] = function() {
+    return (_renderCanvas = Module["_renderCanvas"] = Module["asm"]["renderCanvas"]).apply(null, arguments)
+};
 var ___errno_location = Module["___errno_location"] = function() {
     return (___errno_location = Module["___errno_location"] = Module["asm"]["__errno_location"]).apply(null, arguments)
 };

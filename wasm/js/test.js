@@ -63,7 +63,7 @@ WebAssembly.instantiateStreaming(fetch('test.c.wasm'), {}).then(wasm => {
         array = new Int32Array(memory.buffer, 0, size);
         array.set( Array.from({length: size}, (n,i) => i + 1 ) );
         result   = sumArrayInt32(array.byteOffset, array.length)
-        expected = array.reduce((total, n) => total + n)
+        expected = 0 // array.reduce((total, n) => total + n)
         console.log(`i32 | sum(1 .. 2^${n}) = ${result}`, result == expected);
     }
 })
@@ -84,7 +84,27 @@ WebAssembly.instantiateStreaming(fetch('test.c.wasm'), {}).then(wasm => {
         array    = new BigInt64Array(memory.buffer, 0, size*2);  // BigInt64Array requires size*2
         array.set( Array.from({length: size}, (n,i) => BigInt(i + 1) ) );
         result   = sumArrayInt64(array.byteOffset, array.length);  // C long is still returned as i32
-        expected = array.reduce((total, n) => total + n).valueOf();
+        expected = 0 // array.reduce((total, n) => total + n).valueOf();
         console.log(`i64 | sum(1 .. 2^${n}) = ${result}`, result == expected, expected);
     }
+});
+
+
+// Test returning pointer to predefined WASM array
+WebAssembly.instantiateStreaming(fetch('test.c.wasm'), {}).then(wasm => {
+    console.warn('Test returning pointer to predefined WASM array');
+
+    const { renderCanvas, memory } = wasm.instance.exports;
+    const canvas  = document.getElementById('canvas-wasm-test');
+    const ctx     = canvas.getContext('2d');
+    canvas.width  = window.innerWidth;  // resize canvas to window
+    canvas.height = window.innerHeight; // resize canvas to window
+
+    const width   = canvas.width;
+    const height  = canvas.height;
+    const pointer = renderCanvas(width, height);
+    const data = new Uint8ClampedArray(memory.buffer, pointer, width * height * 4);
+    const img  = new ImageData(data, width, height);
+
+    ctx.putImageData(img, 0, 0);
 });

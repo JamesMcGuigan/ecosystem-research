@@ -157,10 +157,10 @@
     global.set 0
     local.get 0)
   (func (;9;) (type 0) (result i32)
-    i32.const 8295424)
+    i32.const 2048)
   (table (;0;) 1 1 funcref)
   (memory (;0;) 256 256)
-  (global (;0;) (mut i32) (i32.const 13538320))
+  (global (;0;) (mut i32) (i32.const 5244944))
   (export "memory" (memory 0))
   (export "__wasm_call_ctors" (func 0))
   (export "answer" (func 1))
