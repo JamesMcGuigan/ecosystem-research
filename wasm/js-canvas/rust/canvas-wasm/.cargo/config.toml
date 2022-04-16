@@ -1,0 +1,6 @@
+## --target is defined in .cargo/config.toml
+## DOCS: https://stackoverflow.com/questions/49453571/how-can-i-set-default-build-target-for-cargo
+## DOCS: https://doc.rust-lang.org/cargo/reference/config.html
+
+[build]
+target = "wasm32-unknown-unknown"

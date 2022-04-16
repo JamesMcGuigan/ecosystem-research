@@ -5,4 +5,26 @@ edition = "2021"
 
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 
+# DOCS: https://rustwasm.github.io/docs/wasm-pack/tutorials/npm-browser-packages/template-deep-dive/cargo-toml.html
+[lib]
+crate-type = ["cdylib", "rlib"]
+
+# DOCS: https://github.com/rustwasm/wasm-bindgen/issues/2357
 [dependencies]
+wasm-bindgen = "^0.2"
+stdweb = "0.4.20"
+# web-sys = "^0.3"  # defined via [dependencies.web-sys]
+
+# DOCS: https://books.google.co.uk/books?id=wKRnEAAAQBAJ&newbks=0&lpg=PA18&dq=%22cannot%20find%20function%20%60window%60%20in%20crate%20%60web_sys%60%22&pg=PA18#v=onepage&q=%22cannot%20find%20function%20%60window%60%20in%20crate%20%60web_sys%60%22&f=false
+# DOCS: https://github.com/rustwasm/wasm-bindgen/issues/2324
+# DOCS: https://rustwasm.github.io/wasm-bindgen/web-sys/using-web-sys.html
+[dependencies.web-sys]
+version = "^0.3"
+features = [ "Window", "Document", "console" ]
+
+
+## --target is defined in .cargo/config.toml
+## DOCS: https://stackoverflow.com/questions/49453571/how-can-i-set-default-build-target-for-cargo
+## DOCS: https://doc.rust-lang.org/cargo/reference/config.html
+#[build]
+#target = "wasm32-unknown-unknown"
