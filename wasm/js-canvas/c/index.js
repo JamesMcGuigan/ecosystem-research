@@ -97,14 +97,20 @@ WebAssembly.instantiateStreaming(fetch('src/test.c.wasm'), {}).then(wasm => {
     const { renderCanvas, memory } = wasm.instance.exports;
     const canvas  = document.getElementById('canvas-wasm-test');
     const ctx     = canvas.getContext('2d');
-    canvas.width  = window.innerWidth;  // resize canvas to window
-    canvas.height = window.innerHeight; // resize canvas to window
+    function onWindowResize() {
+        const timeStart = Date.now();
+        canvas.width  = window.innerWidth;  // resize canvas to window
+        canvas.height = window.innerHeight; // resize canvas to window
 
-    const width   = canvas.width;
-    const height  = canvas.height;
-    const pointer = renderCanvas(width, height);
-    const data = new Uint8ClampedArray(memory.buffer, pointer, width * height * 4);
-    const img  = new ImageData(data, width, height);
+        const width   = canvas.width;
+        const height  = canvas.height;
+        const pointer = renderCanvas(width, height);  // Rust = ~1000ms | C = ~20ms
+        const data    = new Uint8ClampedArray(memory.buffer, pointer, width * height * 4);
+        const img     = new ImageData(data, width, height);
 
-    ctx.putImageData(img, 0, 0);
+        ctx.putImageData(img, 0, 0);
+        console.log(`C::renderCanvas( ${canvas.width} x ${canvas.height} ): ${Date.now() - timeStart}ms`)
+    }
+    window.addEventListener('resize', onWindowResize);
+    onWindowResize();
 });

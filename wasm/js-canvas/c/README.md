@@ -50,4 +50,10 @@ test.c.wat: (func (;9;) (type 0) (result i32) i32.const 2048)
 ```
 
 Canvas rendering still seems to work even if insufficent memory is preallocated.
-Unsure about the implications of buffer overflow inside a WASM file 
+Unsure about the implications of buffer overflow inside a WASM file
+
+## Performance 
+
+- The C implemention using a predefined WASM array takes about ~20ms to render
+- The Rust implemention takes about ~1000ms to render
+- Unsure why there is a 200x performance penalty for using Rust bindings 

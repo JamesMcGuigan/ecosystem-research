@@ -18,3 +18,11 @@ webpack dev-server
 - `./pkg/` - `wasm-bindgen` wasm from `webpack build` 
   - accessed in JS via `import('./pkg').then(wasm => {})` 
 - `./dist/` - static webserver output from `webpack build` 
+
+
+## Performance
+
+- The C implemention using a predefined WASM array takes about ~20ms to render
+- The Rust implemention takes about ~1000ms to render
+- Unsure why there is a 200x performance penalty for using Rust bindings 
+
