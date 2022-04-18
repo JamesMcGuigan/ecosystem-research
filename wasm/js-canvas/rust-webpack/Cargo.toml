@@ -16,4 +16,6 @@ version = "0.3"
 features = [
     "HtmlInputElement",
     "Window",
+    "CanvasRenderingContext2d",
+    "ImageData",
 ]
