@@ -8,7 +8,7 @@ rm -rvf node_modules/ dist/ pkg/ target/
 npm install
 cargo build
 webpack build
-webpack dev-server
+webpack serve
 ```
 
 ## Output

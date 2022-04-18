@@ -15,16 +15,28 @@ emsdk --help
 ```
 
 ## Install wasm2wat
+Arch Linux
 ```
 sudo pacman -S wabt       # wasm2wat
 sudo pacman -S moreutils  # sponge
 sudo npm install -g js-beautify
 ```
 
+OSX
+```
+brew install wabt
+brew install parallel
+brew install moreutils
+brew unlink  moreutils && brew link --overwrite moreutils
+brew unlink  parallel  && brew link --overwrite parallel
+sudo npm install -g js-beautify
+```
+
 ## Compile
 ```
 # ./build.sh generates: test.c.js test.c.wasm test.c.wat
-emcc     -O ./test.c      -o ./test.c.js  # -s EXPORTED_FUNCTIONS=_render
+cd ./src/
+emcc     -O ./test.c      -o ./test.c.js  # -s EXPORTED_FUNCTIONS=§_render
 wasm2wat    ./test.c.wasm -o ./test.c.wat
 js-beautify ./test.c.js | sponge ./test.c.js
 ```
@@ -54,6 +66,6 @@ Unsure about the implications of buffer overflow inside a WASM file
 
 ## Performance 
 
-- The C implemention using a predefined WASM array takes about ~20ms to render
-- The Rust implemention takes about ~1000ms to render
+- The C implementation using a predefined WASM array takes about ~20ms to render
+- The Rust implementation takes about ~1000ms to render
 - Unsure why there is a 200x performance penalty for using Rust bindings 

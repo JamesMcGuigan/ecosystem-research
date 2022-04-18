@@ -287,30 +287,30 @@ function ccall(ident, returnType, argTypes, args, opts) {
 var ALLOC_STACK = 1;
 var UTF8Decoder = typeof TextDecoder != "undefined" ? new TextDecoder("utf8") : undefined;
 
-function UTF8ArrayToString(heapOrArray, idx, maxBytesToRead) {
+function UTF8ArrayToString(heap, idx, maxBytesToRead) {
     var endIdx = idx + maxBytesToRead;
     var endPtr = idx;
-    while (heapOrArray[endPtr] && !(endPtr >= endIdx)) ++endPtr;
-    if (endPtr - idx > 16 && heapOrArray.buffer && UTF8Decoder) {
-        return UTF8Decoder.decode(heapOrArray.subarray(idx, endPtr))
+    while (heap[endPtr] && !(endPtr >= endIdx)) ++endPtr;
+    if (endPtr - idx > 16 && heap.subarray && UTF8Decoder) {
+        return UTF8Decoder.decode(heap.subarray(idx, endPtr))
     } else {
         var str = "";
         while (idx < endPtr) {
-            var u0 = heapOrArray[idx++];
+            var u0 = heap[idx++];
             if (!(u0 & 128)) {
                 str += String.fromCharCode(u0);
                 continue
             }
-            var u1 = heapOrArray[idx++] & 63;
+            var u1 = heap[idx++] & 63;
             if ((u0 & 224) == 192) {
                 str += String.fromCharCode((u0 & 31) << 6 | u1);
                 continue
             }
-            var u2 = heapOrArray[idx++] & 63;
+            var u2 = heap[idx++] & 63;
             if ((u0 & 240) == 224) {
                 u0 = (u0 & 15) << 12 | u1 << 6 | u2
             } else {
-                u0 = (u0 & 7) << 18 | u1 << 12 | u2 << 6 | heapOrArray[idx++] & 63
+                u0 = (u0 & 7) << 18 | u1 << 12 | u2 << 6 | heap[idx++] & 63
             }
             if (u0 < 65536) {
                 str += String.fromCharCode(u0)
@@ -408,9 +408,11 @@ var __ATPRERUN__ = [];
 var __ATINIT__ = [];
 var __ATPOSTRUN__ = [];
 var runtimeInitialized = false;
+var runtimeExited = false;
+var runtimeKeepaliveCounter = 0;
 
 function keepRuntimeAlive() {
-    return noExitRuntime
+    return noExitRuntime || runtimeKeepaliveCounter > 0
 }
 
 function preRun() {
@@ -426,6 +428,10 @@ function preRun() {
 function initRuntime() {
     runtimeInitialized = true;
     callRuntimeCallbacks(__ATINIT__)
+}
+
+function exitRuntime() {
+    runtimeExited = true
 }
 
 function postRun() {

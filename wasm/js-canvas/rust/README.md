@@ -14,9 +14,10 @@ Prefer installing via rustup rather than Arch pacman
 curl https://sh.rustup.rs -sSf | sh  # Install Rust
 source $HOME/.cargo/env   # .bashrc
 
-cargo install wasm-pack
+brew install   emscripten
 sudo pacman -S emscripten
-cargo install -f wasm-bindgen-cli  
+cargo install wasm-pack
+cargo install wasm-bindgen-cli  
 ```
 
 

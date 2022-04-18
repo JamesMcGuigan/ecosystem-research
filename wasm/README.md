@@ -19,9 +19,44 @@ Utilities:
 - Emscripten - LLVM compiler toolchain to WebAssembly - https://emscripten.org/
 
 ## Install
+
+Rust
+```
+curl https://sh.rustup.rs -sSf | sh  # Install Rust
+source $HOME/.cargo/env   # .bashrc
+
+cargo install wasm-pack
+cargo install wasm-bindgen-cli
+```
+
+Tools
 ```
 sudo pacman -S  wabt wasmtime wasmer emscripten # Arch Linux
 brew install    wabt wasmtime wasmer emscripten # Homebrew OSX
+```
+
+EMSDK
+```
+git clone https://github.com/emscripten-core/emsdk.git
+cd emsdk
+./emsdk install latest
+./emsdk activate latest
+echo 'source "/usr/local/src/emsdk/emsdk_env.sh" 2> /dev/null' >> ~/.bashrc
+emsdk --help
+```
+
+parallel + sponge + js-beautify 
+```
+# Arch
+sudo pacman -S moreutils  # sponge
+sudo npm install -g js-beautify
+
+# OSX
+brew install parallel
+brew install moreutils
+brew unlink  moreutils && brew link --overwrite moreutils
+brew unlink  parallel  && brew link --overwrite parallel
+sudo npm install -g js-beautify
 ```
 
 ## Commands
