@@ -2,14 +2,17 @@
   "name": "rust-webpack",
   "version": "1.0.0",
   "description": "Example Rust <-> WASM <-> JS <-> Canvas",
+  "author": "James McGuigan <james.mcguigan@gmail.com>",
+  "license": "MIT",
   "main": "index.js",
   "scripts": {
     "build": "webpack",
     "serve": "webpack serve",
     "clean": "rm -rvf node_modules/ target/ pkg/ dist/"
   },
-  "author": "James McGuigan <james.mcguigan@gmail.com>",
-  "license": "MIT",
+  "dependencies": {
+    "text-encoding": "^0.7.0"
+  },
   "devDependencies": {
     "@wasm-tool/wasm-pack-plugin": "^1.6.0",
     "html-webpack-plugin": "^5.5.0",
