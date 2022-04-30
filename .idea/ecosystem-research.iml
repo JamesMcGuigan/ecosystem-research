@@ -7,12 +7,14 @@
       <sourceFolder url="file://$MODULE_DIR$/rust/rust-crash-course/src" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/wasm/js-canvas/rust/canvas-wasm/src" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/wasm/js-canvas/rust-webpack/src" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/wasm/practical-guide-to-wasm-memory/src" isTestSource="false" />
       <excludeFolder url="file://$MODULE_DIR$/.idea/sonarlint" />
       <excludeFolder url="file://$MODULE_DIR$/rust/hello-rust/target" />
       <excludeFolder url="file://$MODULE_DIR$/rust/rust-crash-course/target" />
       <excludeFolder url="file://$MODULE_DIR$/wasm/js-canvas/rust/canvas-wasm/target" />
       <excludeFolder url="file://$MODULE_DIR$/wasm/js-canvas/rust/canvas-wasm/wasm-pack" />
       <excludeFolder url="file://$MODULE_DIR$/wasm/js-canvas/rust-webpack/target" />
+      <excludeFolder url="file://$MODULE_DIR$/wasm/practical-guide-to-wasm-memory/target" />
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
