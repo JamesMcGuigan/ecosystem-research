@@ -13,7 +13,8 @@ import('./pkg').then(wasm => {
         canvas.height = window.innerHeight;
 
         // wasm.draw_julia_set(ctx, canvas.width, canvas.height, -0.15, 0.65);
-        wasm.draw_color_map(ctx, canvas.width, canvas.height);  // Rust = ~1000ms | C = ~20ms
+        // wasm.draw_color_map(ctx, canvas.width, canvas.height);  // Rust = ~1000ms | C = ~20ms
+        wasm.draw_color_map_array(ctx, canvas.width, canvas.height);  // Rust = ~1000ms | C = ~20ms
         console.log(`Rust::renderCanvas( ${canvas.width} x ${canvas.height} ): ${Date.now() - timeStart}ms`)
     }
     window.addEventListener('resize', onWindowResize);

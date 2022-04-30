@@ -43,13 +43,14 @@ pub fn draw_color_map(
     width:  u32,
     height: u32,
 ) -> Result<(), JsValue> {
-    let mut data = get_color_map(width, height);
+    let mut data = get_color_map_vec(width, height);
     let data = ImageData::new_with_u8_clamped_array_and_sh(Clamped(&mut data), width, height)?;
     ctx.put_image_data(&data, 0.0, 0.0)
 }
 
-fn get_color_map(width: u32, height: u32) -> Vec<u8> {
-    let mut data = Vec::new();
+fn get_color_map_vec(width: u32, height: u32) -> Vec<u8> {
+    let size = (width * height * 4) as usize;
+    let mut data = Vec::with_capacity(size);
     for y in 0..height {
         for x in 0..width {
             let x_pc = x as f64 / width as f64;
@@ -66,4 +67,38 @@ fn get_color_map(width: u32, height: u32) -> Vec<u8> {
         }
     }
     return data;
+}
+
+
+#[wasm_bindgen]
+pub fn draw_color_map_array(
+    ctx:    &CanvasRenderingContext2d,
+    width:  u32,
+    height: u32,
+) -> Result<(), JsValue> {
+    let mut data = get_color_map_array(width, height);
+    let data = ImageData::new_with_u8_clamped_array_and_sh(Clamped(&mut data), width, height)?;
+    ctx.put_image_data(&data, 0.0, 0.0)
+}
+
+fn get_color_map_array(width: u32, height: u32) -> [u8; 1920*1080*4] {
+    let mut color_map_array: [u8; 1920*1080*4] = [0; 1920*1080*4];
+    let mut i = 0;
+    for y in 0..height {
+        for x in 0..width {
+            let x_pc = x as f64 / width as f64;
+            let y_pc = y as f64 / height as f64;
+            let r = 255.0 * x_pc;
+            let g = 255.0 * y_pc;
+            let b = 255.0 * (x_pc + y_pc) / 2.0;
+            let a = 255.0;
+
+            color_map_array[i+0] = r as u8;
+            color_map_array[i+1] = g as u8;
+            color_map_array[i+2] = b as u8;
+            color_map_array[i+3] = a as u8;
+            i += 4;
+        }
+    }
+    return color_map_array;
 }
