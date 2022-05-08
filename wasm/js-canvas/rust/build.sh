@@ -2,7 +2,7 @@
 
 # Build Script
 cd "$(dirname "${BASH_SOURCE[0]}")"  # cd current directory
-cd canvas-wasm
+# cd canvas-wasm
 set -x
 
 cargo build  --target wasm32-unknown-unknown
