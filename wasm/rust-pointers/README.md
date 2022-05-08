@@ -37,3 +37,7 @@ pub fn get_wasm_memory_buffer_pointer() -> *const u8 {
   return pointer;
 }
 ```
+
+### Vectors
+
+Note this approach seems to fail when 
