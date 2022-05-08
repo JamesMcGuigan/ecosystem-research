@@ -13,11 +13,16 @@
 </head>
 <body>
     <canvas id="canvas-wasm-test"></canvas>
+    <script type="module" src="index_es6_module.mjs"></script>
+
+    <!-- BROKEN | but /wasm/rust-pointers/ works! -->
+    <!-- <script type="text/javascript" src="index_webassembly_instantiatestreaming.js"></script> -->
 
     <!-- DOCS: https://rustwasm.github.io/docs/wasm-bindgen/examples/without-a-bundler.html -->
     <script type="text/javascript" src="wasm-pack/no-modules/canvas_wasm.js"></script>
-    <script type="text/javascript" src="index.js"></script>
+    <script type="text/javascript" src="index_wasm_bindgen.js"></script>
 
-    <script type="module" src="index.mjs"></script>
+
+
 </body>
 </html>

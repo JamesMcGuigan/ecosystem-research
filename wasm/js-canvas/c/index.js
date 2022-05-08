@@ -4,8 +4,6 @@
 // Test Static Functions
 WebAssembly.instantiateStreaming(fetch('src/test.c.wasm'), {}).then(wasm => {
     console.warn('Test Static Functions');
-
-    const { answer, squared } = wasm.instance.exports;
     console.log("wasm.instance.exports.answer()",    wasm.instance.exports.answer());
     console.log("wasm.instance.exports.squared(42)", wasm.instance.exports.squared(42));
 });
@@ -104,7 +102,7 @@ WebAssembly.instantiateStreaming(fetch('src/test.c.wasm'), {}).then(wasm => {
 
         const width   = canvas.width;
         const height  = canvas.height;
-        const pointer = renderCanvas(width, height);  // Rust = ~1000ms | C = ~20ms
+        const pointer = renderCanvas(width, height);  // Rust = WAS: ~1000ms NOW: ~5ms | C = ~5ms (Apple M1)
         const data    = new Uint8ClampedArray(memory.buffer, pointer, width * height * 4);
         const img     = new ImageData(data, width, height);
 

@@ -57,7 +57,7 @@ EMCC_CFLAGS="-s ERROR_ON_UNDEFINED_SYMBOLS=0"  cargo build --release --target wa
     ./target/wasm32-unknown-emscripten/release/canvas_wasm.wasm 
 ```
 
-This runs wasm-bindgen, but unsure if this is usable 
+This runs wasm-bindgen, which is used with the `wasm_bindgen()` loader 
 ```  
 wasm-bindgen ./target/wasm32-unknown-unknown/debug/canvas_wasm.wasm   --out-dir ./target/wasm32-unknown-unknown/debug/wasm-bindgen/
 wasm-bindgen ./target/wasm32-unknown-unknown/release/canvas_wasm.wasm --out-dir ./target/wasm32-unknown-unknown/release/wasm-bindgen/
@@ -67,3 +67,10 @@ DOCS: https://stackoverflow.com/questions/64308461/failed-to-load-wasm-applicati
 ```
 wasm-pack build --release --target web
 ```
+
+
+## Javascript
+
+This shows three different ways to import:
+- [index_es6_module.mjs](index_es6_module.mjs) - using ES6 module syntax
+- [index_wasm_bindgen.js](index_wasm_bindgen.js) - using `wasm_bindgen()` loader
