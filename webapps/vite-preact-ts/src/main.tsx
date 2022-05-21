@@ -1,4 +1,5 @@
 import { render } from 'preact'
+// import render from 'preact-render-to-string';
 import { App } from './app'
 import './index.css'
 

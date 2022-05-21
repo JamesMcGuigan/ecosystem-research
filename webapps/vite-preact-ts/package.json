@@ -9,7 +9,8 @@
   },
   "dependencies": {
     "@babel/core": "^7.18.0",
-    "preact": "^10.5.15"
+    "preact": "^10.5.15",
+    "preact-render-to-string": "^5.2.0"
   },
   "devDependencies": {
     "@preact/preset-vite": "^2.1.5",

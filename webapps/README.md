@@ -66,7 +66,7 @@ const staticImageLoader = ({ src }) => {
 ## Vite Preact 
 - https://vitejs.dev/guide/#scaffolding-your-first-vite-project
 - https://github.com/vitejs/awesome-vite#templates
-
+- https://github.com/yomete/preact-ssr/blob/master/server.js - SSR via Node 
 ```
 pnpm create vite vite-preact-ts
 ✔ Select a framework: › preact

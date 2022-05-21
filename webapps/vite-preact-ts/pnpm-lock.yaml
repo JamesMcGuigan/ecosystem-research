@@ -4,12 +4,14 @@ specifiers:
   '@babel/core': ^7.18.0
   '@preact/preset-vite': ^2.1.5
   preact: ^10.5.15
+  preact-render-to-string: ^5.2.0
   typescript: ^4.5.4
   vite: ^2.9.9
 
 dependencies:
   '@babel/core': 7.18.0
   preact: 10.7.2
+  preact-render-to-string: 5.2.0_preact@10.7.2
 
 devDependencies:
   '@preact/preset-vite': 2.2.0_34pqkaw7jhvhuas5dyfogqawmm
@@ -704,8 +706,21 @@ packages:
       source-map-js: 1.0.2
     dev: true
 
+  /preact-render-to-string/5.2.0_preact@10.7.2:
+    resolution: {integrity: sha512-+RGwSW78Cl+NsZRUbFW1MGB++didsfqRk+IyRVTaqy+3OjtpKK/6HgBtfszUX0YXMfo41k2iaQSseAHGKEwrbg==}
+    peerDependencies:
+      preact: '>=10'
+    dependencies:
+      preact: 10.7.2
+      pretty-format: 3.8.0
+    dev: false
+
   /preact/10.7.2:
     resolution: {integrity: sha512-GLjn0I3r6ka+NvxJUppsVFqb4V0qDTEHT/QxHlidPuClGaxF/4AI2Qti4a0cv3XMh5n1+D3hLScW10LRIm5msQ==}
+    dev: false
+
+  /pretty-format/3.8.0:
+    resolution: {integrity: sha1-v77VbV6ad2ZF9LH/eqGjrE+jw4U=}
     dev: false
 
   /resolve/1.22.0:
