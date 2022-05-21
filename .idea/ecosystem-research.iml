@@ -10,6 +10,7 @@
       <sourceFolder url="file://$MODULE_DIR$/wasm/practical-guide-to-wasm-memory/src" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/wasm/js-canvas/rust/src" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/wasm/rust-pointers/src" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/webapps/nextjs/public" type="java-resource" />
       <excludeFolder url="file://$MODULE_DIR$/.idea/sonarlint" />
       <excludeFolder url="file://$MODULE_DIR$/rust/hello-rust/target" />
       <excludeFolder url="file://$MODULE_DIR$/rust/rust-crash-course/target" />

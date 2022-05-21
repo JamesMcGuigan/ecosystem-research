@@ -62,3 +62,20 @@ const staticImageLoader = ({ src }) => {
 <Image src="/vercel.svg"  alt="Vercel Logo" width={72} height={16} loader={staticImageLoader} />
 <Image src="/favicon.png" alt="Vercel Logo" width={16} height={16} unoptimized />
 ```
+
+## Vite Preact 
+- https://vitejs.dev/guide/#scaffolding-your-first-vite-project
+- https://github.com/vitejs/awesome-vite#templates
+
+```
+pnpm create vite vite-preact-ts
+✔ Select a framework: › preact
+✔ Select a variant: › preact-ts
+```
+
+```
+cd vite-preact-ts
+pnpm install
+vite                                     # dev server
+tsc && vite build && http-server dist/   # production
+```
