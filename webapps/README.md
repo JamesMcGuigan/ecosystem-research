@@ -11,6 +11,22 @@ npm init svelte svelte
 ✔ Add Prettier for code formatting? … Yes
 ✔ Add Playwright for browser testing? … Yes
 ```
+
+svelte.config.ts
 ```
+// https://kit.svelte.dev/docs/adapters#supported-environments-static-sites
+import adapter from '@sveltejs/adapter-static';  
+const config = {
+	kit: {
+		adapter: adapter(),
+		prerender: { default: true }
+	}
+};
+```
+
+Build and deploy
+```
+cd ./svelte/
 svelte-kit build
+http-server ./build/
 ```
