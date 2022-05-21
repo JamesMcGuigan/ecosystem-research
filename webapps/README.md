@@ -1,4 +1,4 @@
-# Webapps
+# Web Application Frameworks
 
 ## Svelte
 
@@ -34,4 +34,31 @@ http-server ./build/
 ## NextJs
 ```
 npx create-next-app@latest nextjs
+```
+Build and deploy
+```
+cd ./nextjs/
+next dev
+next build && next start
+next build && next export && http-server out/  # static site generation
+```
+
+Static Site Generation
+- https://github.com/vercel/next.js/discussions/19065
+- warn - Statically exporting a Next.js application via `next export` disables API routes.
+
+next.config.js
+```
+images: {
+    loader: "custom",
+    // disableStaticImages: true,  // base64 encode images on prerender ???
+}
+```
+index.js
+```
+const staticImageLoader = ({ src }) => {
+    return src
+};
+<Image src="/vercel.svg"  alt="Vercel Logo" width={72} height={16} loader={staticImageLoader} />
+<Image src="/favicon.png" alt="Vercel Logo" width={16} height={16} unoptimized />
 ```
