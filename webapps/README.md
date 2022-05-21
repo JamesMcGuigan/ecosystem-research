@@ -30,3 +30,8 @@ cd ./svelte/
 svelte-kit build
 http-server ./build/
 ```
+
+## NextJs
+```
+npx create-next-app@latest nextjs
+```
