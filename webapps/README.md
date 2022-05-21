@@ -65,8 +65,7 @@ const staticImageLoader = ({ src }) => {
 
 ## Vite Preact 
 - https://vitejs.dev/guide/#scaffolding-your-first-vite-project
-- https://github.com/vitejs/awesome-vite#templates
-- https://github.com/yomete/preact-ssr/blob/master/server.js - SSR via Node 
+- https://github.com/vitejs/awesome-vite#templates 
 ```
 pnpm create vite vite-preact-ts
 ✔ Select a framework: › preact
@@ -79,3 +78,7 @@ pnpm install
 vite                                     # dev server
 tsc && vite build && http-server dist/   # production
 ```
+
+Issues:
+- Unsure how to implement SSR Server Side Rendering without a Node Server
+- https://github.com/yomete/preact-ssr/blob/master/server.js - SSR via Node
