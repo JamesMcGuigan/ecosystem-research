@@ -1,0 +1,63 @@
+{
+  "name": "reactnativestarterkit",
+  "version": "0.0.1",
+  "private": true,
+  "scripts": {
+    "android": "react-native run-android",
+    "ios": "react-native run-ios",
+    "start": "react-native start",
+    "test": "jest",
+    "lint": "eslint ."
+  },
+  "dependencies": {
+    "@react-native-community/async-storage": "^1.12.1",
+    "@react-native-community/masked-view": "^0.1.11",
+    "@react-native-community/toolbar-android": "^0.2.1",
+    "@rematch/core": "^2.1.0",
+    "@rematch/loading": "^2.1.0",
+    "@rematch/persist": "^2.1.0",
+    "axios": "^0.21.3",
+    "jsonwebtoken": "^8.5.1",
+    "moment": "^2.29.1",
+    "native-base": "2",
+    "prop-types": "^15.7.2",
+    "react": "17.0.2",
+    "react-hook-form": "^7.15.0",
+    "react-native": "0.65.1",
+    "react-native-gesture-handler": "^1.10.3",
+    "react-native-reanimated": "^2.2.0",
+    "react-native-router-flux": "^4.3.1",
+    "react-native-safe-area-context": "^3.3.2",
+    "react-native-screens": "^3.6.0",
+    "react-native-splash-screen": "^3.2.0",
+    "react-native-vector-icons": "^8.1.0",
+    "react-redux": "^7.2.5",
+    "redux-persist": "^6.0.0"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.12.9",
+    "@babel/runtime": "^7.12.5",
+    "@testing-library/react-native": "^7.2.0",
+    "babel-eslint": "^10.1.0",
+    "babel-jest": "^26.6.3",
+    "eslint": "7.14.0",
+    "eslint-config-airbnb": "^18.2.1",
+    "eslint-plugin-import": "^2.24.2",
+    "eslint-plugin-jest": "^24.4.0",
+    "eslint-plugin-jsx-a11y": "^6.4.1",
+    "eslint-plugin-react": "^7.25.1",
+    "jest": "^26.6.3",
+    "metro-react-native-babel-preset": "^0.66.0",
+    "react-native-codegen": "^0.0.7",
+    "react-test-renderer": "17.0.2"
+  },
+  "jest": {
+    "preset": "react-native",
+    "transformIgnorePatterns": [
+      "node_modules/(?!((jest-)?react-native|@react-native|react-clone-referenced-element?/.*|react-navigation|redux-persist|native-base(-shoutem-theme)|native-base|react-native-router-flux|@react-native-community/async-storage|moment|@codler))"
+    ],
+    "globals": {
+      "__DEV__": true
+    }
+  }
+}
