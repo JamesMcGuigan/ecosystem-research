@@ -42,6 +42,10 @@ extern u32 (*Z_checkersZ_isBlack)(u32);
 extern u32 (*Z_checkersZ_withCrown)(u32);
 /* export: 'withoutCrown' */
 extern u32 (*Z_checkersZ_withoutCrown)(u32);
+/* export: 'setPiece' */
+extern void (*Z_checkersZ_setPiece)(u32, u32, u32);
+/* export: 'getPiece' */
+extern u32 (*Z_checkersZ_getPiece)(u32, u32);
 
 #ifdef __cplusplus
 }

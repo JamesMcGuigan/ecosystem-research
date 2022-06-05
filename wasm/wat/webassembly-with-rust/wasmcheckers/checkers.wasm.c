@@ -294,10 +294,12 @@ DEFINE_REINTERPRET(i32_reinterpret_f32, f32, u32)
 DEFINE_REINTERPRET(f64_reinterpret_i64, u64, f64)
 DEFINE_REINTERPRET(i64_reinterpret_f64, f64, u64)
 
-static u32 func_types[2];
+static u32 func_types[4];
 static void init_func_types(void) {
   func_types[0] = wasm_rt_register_func_type(2, 1, WASM_RT_I32, WASM_RT_I32, WASM_RT_I32);
   func_types[1] = wasm_rt_register_func_type(1, 1, WASM_RT_I32, WASM_RT_I32);
+  func_types[2] = wasm_rt_register_func_type(3, 0, WASM_RT_I32, WASM_RT_I32, WASM_RT_I32);
+  func_types[3] = wasm_rt_register_func_type(3, 1, WASM_RT_I32, WASM_RT_I32, WASM_RT_I32, WASM_RT_I32);
 }
 
 static u32 w2c_indexForPosition(u32, u32);
@@ -307,6 +309,9 @@ static u32 w2c_isWhite(u32);
 static u32 w2c_isBlack(u32);
 static u32 w2c_withCrown(u32);
 static u32 w2c_withoutCrown(u32);
+static void w2c_setPiece(u32, u32, u32);
+static u32 w2c_getPiece(u32, u32);
+static u32 w2c_f9(u32, u32, u32);
 
 static u32 w2c_g0;
 static u32 w2c_g1;
@@ -400,6 +405,55 @@ static u32 w2c_withoutCrown(u32 w2c_p0) {
   return w2c_i0;
 }
 
+static void w2c_setPiece(u32 w2c_p0, u32 w2c_p1, u32 w2c_p2) {
+  FUNC_PROLOGUE;
+  u32 w2c_i0, w2c_i1;
+  w2c_i0 = w2c_p0;
+  w2c_i1 = w2c_p1;
+  w2c_i0 = w2c_offsetForPosition(w2c_i0, w2c_i1);
+  w2c_i1 = w2c_p2;
+  i32_store((&w2c_M0), (u64)(w2c_i0), w2c_i1);
+  FUNC_EPILOGUE;
+}
+
+static u32 w2c_getPiece(u32 w2c_p0, u32 w2c_p1) {
+  FUNC_PROLOGUE;
+  u32 w2c_i0, w2c_i1, w2c_i2, w2c_i3;
+  w2c_i0 = 0u;
+  w2c_i1 = 7u;
+  w2c_i2 = w2c_p0;
+  w2c_i0 = w2c_f9(w2c_i0, w2c_i1, w2c_i2);
+  w2c_i1 = 0u;
+  w2c_i2 = 7u;
+  w2c_i3 = w2c_p1;
+  w2c_i1 = w2c_f9(w2c_i1, w2c_i2, w2c_i3);
+  w2c_i0 &= w2c_i1;
+  if (w2c_i0) {
+    w2c_i0 = w2c_p0;
+    w2c_i1 = w2c_p1;
+    w2c_i0 = w2c_offsetForPosition(w2c_i0, w2c_i1);
+    w2c_i0 = i32_load((&w2c_M0), (u64)(w2c_i0));
+  } else {
+    UNREACHABLE;
+  }
+  FUNC_EPILOGUE;
+  return w2c_i0;
+}
+
+static u32 w2c_f9(u32 w2c_p0, u32 w2c_p1, u32 w2c_p2) {
+  FUNC_PROLOGUE;
+  u32 w2c_i0, w2c_i1, w2c_i2;
+  w2c_i0 = w2c_p2;
+  w2c_i1 = w2c_p0;
+  w2c_i0 = (u32)((s32)w2c_i0 >= (s32)w2c_i1);
+  w2c_i1 = w2c_p2;
+  w2c_i2 = w2c_p1;
+  w2c_i1 = (u32)((s32)w2c_i1 <= (s32)w2c_i2);
+  w2c_i0 &= w2c_i1;
+  FUNC_EPILOGUE;
+  return w2c_i0;
+}
+
 
 static void init_memory(void) {
   wasm_rt_allocate_memory((&w2c_M0), 1, 65536);
@@ -423,6 +477,10 @@ u32 (*Z_checkersZ_isBlack)(u32);
 u32 (*Z_checkersZ_withCrown)(u32);
 /* export: 'withoutCrown' */
 u32 (*Z_checkersZ_withoutCrown)(u32);
+/* export: 'setPiece' */
+void (*Z_checkersZ_setPiece)(u32, u32, u32);
+/* export: 'getPiece' */
+u32 (*Z_checkersZ_getPiece)(u32, u32);
 
 static void init_exports(void) {
   /* export: 'indexForPosition' */
@@ -439,6 +497,10 @@ static void init_exports(void) {
   Z_checkersZ_withCrown = (&w2c_withCrown);
   /* export: 'withoutCrown' */
   Z_checkersZ_withoutCrown = (&w2c_withoutCrown);
+  /* export: 'setPiece' */
+  Z_checkersZ_setPiece = (&w2c_setPiece);
+  /* export: 'getPiece' */
+  Z_checkersZ_getPiece = (&w2c_getPiece);
 }
 
 void Z_checkers_init(void) {
