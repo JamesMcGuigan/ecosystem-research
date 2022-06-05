@@ -15,3 +15,6 @@ wasm-decompile checkers.wasm     # transpile to C (pseudocode)
 wasm-validate  checkers.wasm -v  # BeginExportSection EndExportSection
 
 ls -l *.wat *.wasm* | sort -nr -k5
+
+./test.sh
+./test.bats

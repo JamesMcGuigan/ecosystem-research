@@ -299,15 +299,15 @@ static void init_func_types(void) {
   func_types[0] = wasm_rt_register_func_type(2, 1, WASM_RT_I32, WASM_RT_I32, WASM_RT_I32);
 }
 
-static u32 w2c_f0(u32, u32);
-static u32 w2c_f1(u32, u32);
+static u32 w2c_indexForPosition(u32, u32);
+static u32 w2c_offsetForPosition(u32, u32);
 
 static void init_globals(void) {
 }
 
 static wasm_rt_memory_t w2c_M0;
 
-static u32 w2c_f0(u32 w2c_p0, u32 w2c_p1) {
+static u32 w2c_indexForPosition(u32 w2c_p0, u32 w2c_p1) {
   FUNC_PROLOGUE;
   u32 w2c_i0, w2c_i1;
   w2c_i0 = 8u;
@@ -319,12 +319,12 @@ static u32 w2c_f0(u32 w2c_p0, u32 w2c_p1) {
   return w2c_i0;
 }
 
-static u32 w2c_f1(u32 w2c_p0, u32 w2c_p1) {
+static u32 w2c_offsetForPosition(u32 w2c_p0, u32 w2c_p1) {
   FUNC_PROLOGUE;
   u32 w2c_i0, w2c_i1;
   w2c_i0 = w2c_p0;
   w2c_i1 = w2c_p1;
-  w2c_i0 = w2c_f0(w2c_i0, w2c_i1);
+  w2c_i0 = w2c_indexForPosition(w2c_i0, w2c_i1);
   w2c_i1 = 4u;
   w2c_i0 *= w2c_i1;
   FUNC_EPILOGUE;
@@ -340,7 +340,16 @@ static void init_table(void) {
   uint32_t offset;
 }
 
+/* export: 'indexForPosition' */
+u32 (*Z_checkersZ_indexForPosition)(u32, u32);
+/* export: 'offsetForPosition' */
+u32 (*Z_checkersZ_offsetForPosition)(u32, u32);
+
 static void init_exports(void) {
+  /* export: 'indexForPosition' */
+  Z_checkersZ_indexForPosition = (&w2c_indexForPosition);
+  /* export: 'offsetForPosition' */
+  Z_checkersZ_offsetForPosition = (&w2c_offsetForPosition);
 }
 
 void Z_checkers_init(void) {

@@ -28,6 +28,11 @@ extern "C" {
 void Z_checkers_init(void);
 void Z_checkers_free(void);
 
+/* export: 'indexForPosition' */
+extern u32 (*Z_checkersZ_indexForPosition)(u32, u32);
+/* export: 'offsetForPosition' */
+extern u32 (*Z_checkersZ_offsetForPosition)(u32, u32);
+
 #ifdef __cplusplus
 }
 #endif

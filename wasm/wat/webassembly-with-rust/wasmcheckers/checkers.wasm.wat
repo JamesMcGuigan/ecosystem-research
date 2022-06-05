@@ -12,4 +12,6 @@
     call 0
     i32.const 4
     i32.mul)
-  (memory (;0;) 1))
+  (memory (;0;) 1)
+  (export "indexForPosition" (func 0))
+  (export "offsetForPosition" (func 1)))

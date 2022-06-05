@@ -1,5 +1,7 @@
 (module
     (memory $mem 1)
+    (export "indexForPosition"  (func $indexForPosition))
+    (export "offsetForPosition" (func $offsetForPosition))
 
     ;; Index = (x + y * 8)
     (func $indexForPosition (param $x i32) (param $y i32) (result i32)
