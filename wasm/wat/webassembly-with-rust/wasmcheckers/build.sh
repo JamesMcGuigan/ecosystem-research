@@ -16,5 +16,5 @@ wasm-validate  checkers.wasm -v  # BeginExportSection EndExportSection
 
 ls -l *.wat *.wasm* | sort -nr -k5
 
-./test.sh
-./test.bats
+#./test.sh
+#./test.bats

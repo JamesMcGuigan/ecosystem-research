@@ -3,174 +3,527 @@ checkers.wasm:	file format wasm 0x1
 
 Sections:
 
-     Type start=0x0000000a end=0x00000023 (size=0x00000019) count: 4
- Function start=0x00000025 end=0x00000030 (size=0x0000000b) count: 10
-   Memory start=0x00000032 end=0x00000035 (size=0x00000003) count: 1
-   Global start=0x00000037 end=0x00000047 (size=0x00000010) count: 3
-   Export start=0x00000049 end=0x000000c2 (size=0x00000079) count: 9
-     Code start=0x000000c5 end=0x0000014f (size=0x0000008a) count: 10
+     Type start=0x0000000a end=0x00000042 (size=0x00000038) count: 10
+   Import start=0x00000044 end=0x0000006f (size=0x0000002b) count: 2
+ Function start=0x00000071 end=0x00000088 (size=0x00000017) count: 22
+   Memory start=0x0000008a end=0x0000008d (size=0x00000003) count: 1
+   Global start=0x0000008f end=0x000000a4 (size=0x00000015) count: 4
+   Export start=0x000000a7 end=0x000001a2 (size=0x000000fb) count: 19
+     Code start=0x000001a5 end=0x00000413 (size=0x0000026e) count: 22
 
 Section Details:
 
-Type[4]:
- - type[0] (i32, i32) -> i32
- - type[1] (i32) -> i32
- - type[2] (i32, i32, i32) -> nil
- - type[3] (i32, i32, i32) -> i32
-Function[10]:
- - func[0] sig=0 <indexForPosition>
- - func[1] sig=0 <offsetForPosition>
- - func[2] sig=1 <isCrowned>
- - func[3] sig=1 <isWhite>
- - func[4] sig=1 <isBlack>
- - func[5] sig=1 <withCrown>
- - func[6] sig=1 <withoutCrown>
- - func[7] sig=2 <setPiece>
- - func[8] sig=0 <getPiece>
- - func[9] sig=3
+Type[10]:
+ - type[0] (i32, i32, i32, i32) -> nil
+ - type[1] (i32, i32) -> nil
+ - type[2] (i32, i32) -> i32
+ - type[3] (i32) -> i32
+ - type[4] () -> i32
+ - type[5] () -> nil
+ - type[6] (i32) -> nil
+ - type[7] (i32, i32, i32) -> nil
+ - type[8] (i32, i32, i32) -> i32
+ - type[9] (i32, i32, i32, i32) -> i32
+Import[2]:
+ - func[0] sig=0 <events.piecemoved> <- events.piecemoved
+ - func[1] sig=1 <events.piececrowned> <- events.piececrowned
+Function[22]:
+ - func[2] sig=2 <indexForPosition>
+ - func[3] sig=2 <offsetForPosition>
+ - func[4] sig=3 <isCrowned>
+ - func[5] sig=3 <isWhite>
+ - func[6] sig=3 <isBlack>
+ - func[7] sig=3 <withCrown>
+ - func[8] sig=3 <withoutCrown>
+ - func[9] sig=4 <getTurnOwner>
+ - func[10] sig=5 <toggleTurnOwner>
+ - func[11] sig=6 <setTurnOwner>
+ - func[12] sig=3 <isPlayersTurn>
+ - func[13] sig=7 <setPiece>
+ - func[14] sig=2 <getPiece>
+ - func[15] sig=8
+ - func[16] sig=9
+ - func[17] sig=2
+ - func[18] sig=9 <move>
+ - func[19] sig=9
+ - func[20] sig=2 <shouldCrown>
+ - func[21] sig=1 <crownPiece>
+ - func[22] sig=2 <distance>
+ - func[23] sig=5 <initBoard>
 Memory[1]:
  - memory[0] pages: initial=1
-Global[3]:
+Global[4]:
  - global[0] i32 mutable=0 - init i32=1
  - global[1] i32 mutable=0 - init i32=2
  - global[2] i32 mutable=0 - init i32=4
-Export[9]:
- - func[0] <indexForPosition> -> "indexForPosition"
- - func[1] <offsetForPosition> -> "offsetForPosition"
- - func[2] <isCrowned> -> "isCrowned"
- - func[3] <isWhite> -> "isWhite"
- - func[4] <isBlack> -> "isBlack"
- - func[5] <withCrown> -> "withCrown"
- - func[6] <withoutCrown> -> "withoutCrown"
- - func[7] <setPiece> -> "setPiece"
- - func[8] <getPiece> -> "getPiece"
-Code[10]:
- - func[0] size=10 <indexForPosition>
- - func[1] size=11 <offsetForPosition>
- - func[2] size=10 <isCrowned>
- - func[3] size=10 <isWhite>
- - func[4] size=10 <isBlack>
- - func[5] size=7 <withCrown>
- - func[6] size=7 <withoutCrown>
- - func[7] size=13 <setPiece>
- - func[8] size=36 <getPiece>
- - func[9] size=13
+ - global[3] i32 mutable=1 - init i32=0
+Export[19]:
+ - func[2] <indexForPosition> -> "indexForPosition"
+ - func[3] <offsetForPosition> -> "offsetForPosition"
+ - func[4] <isCrowned> -> "isCrowned"
+ - func[5] <isWhite> -> "isWhite"
+ - func[6] <isBlack> -> "isBlack"
+ - func[7] <withCrown> -> "withCrown"
+ - func[8] <withoutCrown> -> "withoutCrown"
+ - func[9] <getTurnOwner> -> "getTurnOwner"
+ - func[10] <toggleTurnOwner> -> "toggleTurnOwner"
+ - func[11] <setTurnOwner> -> "setTurnOwner"
+ - func[12] <isPlayersTurn> -> "isPlayersTurn"
+ - func[13] <setPiece> -> "setPiece"
+ - func[14] <getPiece> -> "getPiece"
+ - func[18] <move> -> "move"
+ - func[20] <shouldCrown> -> "shouldCrown"
+ - func[21] <crownPiece> -> "crownPiece"
+ - func[22] <distance> -> "distance"
+ - func[23] <initBoard> -> "initBoard"
+ - memory[0] -> "memory"
+Code[22]:
+ - func[2] size=10 <indexForPosition>
+ - func[3] size=11 <offsetForPosition>
+ - func[4] size=10 <isCrowned>
+ - func[5] size=10 <isWhite>
+ - func[6] size=10 <isBlack>
+ - func[7] size=7 <withCrown>
+ - func[8] size=7 <withoutCrown>
+ - func[9] size=4 <getTurnOwner>
+ - func[10] size=19 <toggleTurnOwner>
+ - func[11] size=6 <setTurnOwner>
+ - func[12] size=10 <isPlayersTurn>
+ - func[13] size=13 <setPiece>
+ - func[14] size=36 <getPiece>
+ - func[15] size=13
+ - func[16] size=48
+ - func[17] size=32
+ - func[18] size=31 <move>
+ - func[19] size=57
+ - func[20] size=31 <shouldCrown>
+ - func[21] size=28 <crownPiece>
+ - func[22] size=7 <distance>
+ - func[23] size=198 <initBoard>
 
 Code Disassembly:
 
-0000c7 func[0] <indexForPosition>:
- 0000c8: 41 08                      | i32.const 8
- 0000ca: 20 01                      | local.get 1
- 0000cc: 6c                         | i32.mul
- 0000cd: 20 00                      | local.get 0
- 0000cf: 6a                         | i32.add
- 0000d0: 0b                         | end
-0000d2 func[1] <offsetForPosition>:
- 0000d3: 20 00                      | local.get 0
- 0000d5: 20 01                      | local.get 1
- 0000d7: 10 00                      | call 0 <indexForPosition>
- 0000d9: 41 04                      | i32.const 4
- 0000db: 6c                         | i32.mul
- 0000dc: 0b                         | end
-0000de func[2] <isCrowned>:
- 0000df: 20 00                      | local.get 0
- 0000e1: 23 02                      | global.get 2
- 0000e3: 71                         | i32.and
- 0000e4: 23 02                      | global.get 2
- 0000e6: 46                         | i32.eq
- 0000e7: 0b                         | end
-0000e9 func[3] <isWhite>:
- 0000ea: 20 00                      | local.get 0
- 0000ec: 23 01                      | global.get 1
- 0000ee: 71                         | i32.and
- 0000ef: 23 01                      | global.get 1
- 0000f1: 46                         | i32.eq
- 0000f2: 0b                         | end
-0000f4 func[4] <isBlack>:
- 0000f5: 20 00                      | local.get 0
- 0000f7: 23 00                      | global.get 0
- 0000f9: 71                         | i32.and
- 0000fa: 23 00                      | global.get 0
- 0000fc: 46                         | i32.eq
- 0000fd: 0b                         | end
-0000ff func[5] <withCrown>:
- 000100: 20 00                      | local.get 0
- 000102: 23 02                      | global.get 2
- 000104: 72                         | i32.or
- 000105: 0b                         | end
-000107 func[6] <withoutCrown>:
- 000108: 20 00                      | local.get 0
- 00010a: 23 02                      | global.get 2
- 00010c: 71                         | i32.and
- 00010d: 0b                         | end
-00010f func[7] <setPiece>:
- 000110: 20 00                      | local.get 0
- 000112: 20 01                      | local.get 1
- 000114: 10 01                      | call 1 <offsetForPosition>
- 000116: 20 02                      | local.get 2
- 000118: 36 02 00                   | i32.store 2 0
- 00011b: 0b                         | end
-00011d func[8] <getPiece>:
- 00011e: 02 7f                      | block i32
- 000120: 41 00                      |   i32.const 0
- 000122: 41 07                      |   i32.const 7
- 000124: 20 00                      |   local.get 0
- 000126: 10 09                      |   call 9
- 000128: 41 00                      |   i32.const 0
- 00012a: 41 07                      |   i32.const 7
- 00012c: 20 01                      |   local.get 1
- 00012e: 10 09                      |   call 9
- 000130: 71                         |   i32.and
- 000131: 0b                         | end
- 000132: 04 7f                      | if i32
- 000134: 20 00                      |   local.get 0
- 000136: 20 01                      |   local.get 1
- 000138: 10 01                      |   call 1 <offsetForPosition>
- 00013a: 28 02 00                   |   i32.load 2 0
- 00013d: 05                         | else
- 00013e: 00                         |   unreachable
- 00013f: 0b                         | end
- 000140: 0b                         | end
-000142 func[9]:
- 000143: 20 02                      | local.get 2
- 000145: 20 00                      | local.get 0
- 000147: 4e                         | i32.ge_s
- 000148: 20 02                      | local.get 2
- 00014a: 20 01                      | local.get 1
- 00014c: 4c                         | i32.le_s
- 00014d: 71                         | i32.and
- 00014e: 0b                         | end
+0001a7 func[2] <indexForPosition>:
+ 0001a8: 41 08                      | i32.const 8
+ 0001aa: 20 01                      | local.get 1
+ 0001ac: 6c                         | i32.mul
+ 0001ad: 20 00                      | local.get 0
+ 0001af: 6a                         | i32.add
+ 0001b0: 0b                         | end
+0001b2 func[3] <offsetForPosition>:
+ 0001b3: 20 00                      | local.get 0
+ 0001b5: 20 01                      | local.get 1
+ 0001b7: 10 02                      | call 2 <indexForPosition>
+ 0001b9: 41 04                      | i32.const 4
+ 0001bb: 6c                         | i32.mul
+ 0001bc: 0b                         | end
+0001be func[4] <isCrowned>:
+ 0001bf: 20 00                      | local.get 0
+ 0001c1: 23 02                      | global.get 2
+ 0001c3: 71                         | i32.and
+ 0001c4: 23 02                      | global.get 2
+ 0001c6: 46                         | i32.eq
+ 0001c7: 0b                         | end
+0001c9 func[5] <isWhite>:
+ 0001ca: 20 00                      | local.get 0
+ 0001cc: 23 01                      | global.get 1
+ 0001ce: 71                         | i32.and
+ 0001cf: 23 01                      | global.get 1
+ 0001d1: 46                         | i32.eq
+ 0001d2: 0b                         | end
+0001d4 func[6] <isBlack>:
+ 0001d5: 20 00                      | local.get 0
+ 0001d7: 23 00                      | global.get 0
+ 0001d9: 71                         | i32.and
+ 0001da: 23 00                      | global.get 0
+ 0001dc: 46                         | i32.eq
+ 0001dd: 0b                         | end
+0001df func[7] <withCrown>:
+ 0001e0: 20 00                      | local.get 0
+ 0001e2: 23 02                      | global.get 2
+ 0001e4: 72                         | i32.or
+ 0001e5: 0b                         | end
+0001e7 func[8] <withoutCrown>:
+ 0001e8: 20 00                      | local.get 0
+ 0001ea: 23 02                      | global.get 2
+ 0001ec: 71                         | i32.and
+ 0001ed: 0b                         | end
+0001ef func[9] <getTurnOwner>:
+ 0001f0: 23 03                      | global.get 3
+ 0001f2: 0b                         | end
+0001f4 func[10] <toggleTurnOwner>:
+ 0001f5: 10 09                      | call 9 <getTurnOwner>
+ 0001f7: 41 01                      | i32.const 1
+ 0001f9: 46                         | i32.eq
+ 0001fa: 04 40                      | if
+ 0001fc: 41 02                      |   i32.const 2
+ 0001fe: 10 0b                      |   call 11 <setTurnOwner>
+ 000200: 05                         | else
+ 000201: 41 01                      |   i32.const 1
+ 000203: 10 0b                      |   call 11 <setTurnOwner>
+ 000205: 0b                         | end
+ 000206: 0b                         | end
+000208 func[11] <setTurnOwner>:
+ 000209: 20 00                      | local.get 0
+ 00020b: 24 03                      | global.set 3
+ 00020d: 0b                         | end
+00020f func[12] <isPlayersTurn>:
+ 000210: 20 00                      | local.get 0
+ 000212: 10 09                      | call 9 <getTurnOwner>
+ 000214: 71                         | i32.and
+ 000215: 41 00                      | i32.const 0
+ 000217: 4a                         | i32.gt_s
+ 000218: 0b                         | end
+00021a func[13] <setPiece>:
+ 00021b: 20 00                      | local.get 0
+ 00021d: 20 01                      | local.get 1
+ 00021f: 10 03                      | call 3 <offsetForPosition>
+ 000221: 20 02                      | local.get 2
+ 000223: 36 02 00                   | i32.store 2 0
+ 000226: 0b                         | end
+000228 func[14] <getPiece>:
+ 000229: 02 7f                      | block i32
+ 00022b: 41 00                      |   i32.const 0
+ 00022d: 41 07                      |   i32.const 7
+ 00022f: 20 00                      |   local.get 0
+ 000231: 10 0f                      |   call 15
+ 000233: 41 00                      |   i32.const 0
+ 000235: 41 07                      |   i32.const 7
+ 000237: 20 01                      |   local.get 1
+ 000239: 10 0f                      |   call 15
+ 00023b: 71                         |   i32.and
+ 00023c: 0b                         | end
+ 00023d: 04 7f                      | if i32
+ 00023f: 20 00                      |   local.get 0
+ 000241: 20 01                      |   local.get 1
+ 000243: 10 03                      |   call 3 <offsetForPosition>
+ 000245: 28 02 00                   |   i32.load 2 0
+ 000248: 05                         | else
+ 000249: 00                         |   unreachable
+ 00024a: 0b                         | end
+ 00024b: 0b                         | end
+00024d func[15]:
+ 00024e: 20 02                      | local.get 2
+ 000250: 20 00                      | local.get 0
+ 000252: 4e                         | i32.ge_s
+ 000253: 20 02                      | local.get 2
+ 000255: 20 01                      | local.get 1
+ 000257: 4c                         | i32.le_s
+ 000258: 71                         | i32.and
+ 000259: 0b                         | end
+00025b func[16]:
+ 00025c: 02 7f                      | local[0..1] type=i32
+ 00025e: 20 00                      | local.get 0
+ 000260: 20 01                      | local.get 1
+ 000262: 10 0e                      | call 14 <getPiece>
+ 000264: 21 04                      | local.set 4
+ 000266: 20 02                      | local.get 2
+ 000268: 20 03                      | local.get 3
+ 00026a: 10 0e                      | call 14 <getPiece>
+ 00026c: 21 05                      | local.set 5
+ 00026e: 02 7f                      | block i32
+ 000270: 20 01                      |   local.get 1
+ 000272: 20 03                      |   local.get 3
+ 000274: 10 11                      |   call 17
+ 000276: 20 04                      |   local.get 4
+ 000278: 10 0c                      |   call 12 <isPlayersTurn>
+ 00027a: 41 00                      |   i32.const 0
+ 00027c: 20 05                      |   local.get 5
+ 00027e: 46                         |   i32.eq
+ 00027f: 71                         |   i32.and
+ 000280: 71                         |   i32.and
+ 000281: 0b                         | end
+ 000282: 04 7f                      | if i32
+ 000284: 41 01                      |   i32.const 1
+ 000286: 05                         | else
+ 000287: 41 00                      |   i32.const 0
+ 000289: 0b                         | end
+ 00028a: 0b                         | end
+00028c func[17]:
+ 00028d: 01 7f                      | local[0] type=i32
+ 00028f: 20 01                      | local.get 1
+ 000291: 20 00                      | local.get 0
+ 000293: 4a                         | i32.gt_s
+ 000294: 04 7f                      | if i32
+ 000296: 20 01                      |   local.get 1
+ 000298: 20 00                      |   local.get 0
+ 00029a: 10 16                      |   call 22 <distance>
+ 00029c: 05                         | else
+ 00029d: 20 00                      |   local.get 0
+ 00029f: 20 01                      |   local.get 1
+ 0002a1: 10 16                      |   call 22 <distance>
+ 0002a3: 0b                         | end
+ 0002a4: 21 02                      | local.set 2
+ 0002a6: 20 02                      | local.get 2
+ 0002a8: 41 02                      | i32.const 2
+ 0002aa: 4d                         | i32.le_u
+ 0002ab: 0b                         | end
+0002ad func[18] <move>:
+ 0002ae: 02 7f                      | block i32
+ 0002b0: 20 00                      |   local.get 0
+ 0002b2: 20 01                      |   local.get 1
+ 0002b4: 20 02                      |   local.get 2
+ 0002b6: 20 03                      |   local.get 3
+ 0002b8: 10 10                      |   call 16
+ 0002ba: 0b                         | end
+ 0002bb: 04 7f                      | if i32
+ 0002bd: 20 00                      |   local.get 0
+ 0002bf: 20 01                      |   local.get 1
+ 0002c1: 20 02                      |   local.get 2
+ 0002c3: 20 03                      |   local.get 3
+ 0002c5: 10 13                      |   call 19
+ 0002c7: 05                         | else
+ 0002c8: 41 00                      |   i32.const 0
+ 0002ca: 0b                         | end
+ 0002cb: 0b                         | end
+0002cd func[19]:
+ 0002ce: 01 7f                      | local[0] type=i32
+ 0002d0: 20 00                      | local.get 0
+ 0002d2: 20 01                      | local.get 1
+ 0002d4: 10 0e                      | call 14 <getPiece>
+ 0002d6: 21 04                      | local.set 4
+ 0002d8: 10 0a                      | call 10 <toggleTurnOwner>
+ 0002da: 20 02                      | local.get 2
+ 0002dc: 20 03                      | local.get 3
+ 0002de: 20 04                      | local.get 4
+ 0002e0: 10 0d                      | call 13 <setPiece>
+ 0002e2: 20 00                      | local.get 0
+ 0002e4: 20 01                      | local.get 1
+ 0002e6: 41 00                      | i32.const 0
+ 0002e8: 10 0d                      | call 13 <setPiece>
+ 0002ea: 20 03                      | local.get 3
+ 0002ec: 20 04                      | local.get 4
+ 0002ee: 10 14                      | call 20 <shouldCrown>
+ 0002f0: 04 40                      | if
+ 0002f2: 20 02                      |   local.get 2
+ 0002f4: 20 03                      |   local.get 3
+ 0002f6: 10 15                      |   call 21 <crownPiece>
+ 0002f8: 0b                         | end
+ 0002f9: 20 00                      | local.get 0
+ 0002fb: 20 01                      | local.get 1
+ 0002fd: 20 02                      | local.get 2
+ 0002ff: 20 03                      | local.get 3
+ 000301: 10 00                      | call 0 <events.piecemoved>
+ 000303: 41 01                      | i32.const 1
+ 000305: 0b                         | end
+000307 func[20] <shouldCrown>:
+ 000308: 20 00                      | local.get 0
+ 00030a: 41 00                      | i32.const 0
+ 00030c: 46                         | i32.eq
+ 00030d: 20 01                      | local.get 1
+ 00030f: 10 05                      | call 5 <isWhite>
+ 000311: 71                         | i32.and
+ 000312: 20 00                      | local.get 0
+ 000314: 41 07                      | i32.const 7
+ 000316: 46                         | i32.eq
+ 000317: 20 01                      | local.get 1
+ 000319: 10 06                      | call 6 <isBlack>
+ 00031b: 71                         | i32.and
+ 00031c: 72                         | i32.or
+ 00031d: 04 7f                      | if i32
+ 00031f: 41 01                      |   i32.const 1
+ 000321: 05                         | else
+ 000322: 41 00                      |   i32.const 0
+ 000324: 0b                         | end
+ 000325: 0b                         | end
+000327 func[21] <crownPiece>:
+ 000328: 01 7f                      | local[0] type=i32
+ 00032a: 20 00                      | local.get 0
+ 00032c: 20 01                      | local.get 1
+ 00032e: 10 0e                      | call 14 <getPiece>
+ 000330: 21 02                      | local.set 2
+ 000332: 20 00                      | local.get 0
+ 000334: 20 01                      | local.get 1
+ 000336: 20 02                      | local.get 2
+ 000338: 10 07                      | call 7 <withCrown>
+ 00033a: 10 0d                      | call 13 <setPiece>
+ 00033c: 20 00                      | local.get 0
+ 00033e: 20 01                      | local.get 1
+ 000340: 10 01                      | call 1 <events.piececrowned>
+ 000342: 0b                         | end
+000344 func[22] <distance>:
+ 000345: 20 00                      | local.get 0
+ 000347: 20 01                      | local.get 1
+ 000349: 6b                         | i32.sub
+ 00034a: 0b                         | end
+00034d func[23] <initBoard>:
+ 00034e: 41 01                      | i32.const 1
+ 000350: 41 00                      | i32.const 0
+ 000352: 23 01                      | global.get 1
+ 000354: 10 0d                      | call 13 <setPiece>
+ 000356: 41 03                      | i32.const 3
+ 000358: 41 00                      | i32.const 0
+ 00035a: 23 01                      | global.get 1
+ 00035c: 10 0d                      | call 13 <setPiece>
+ 00035e: 41 05                      | i32.const 5
+ 000360: 41 00                      | i32.const 0
+ 000362: 23 01                      | global.get 1
+ 000364: 10 0d                      | call 13 <setPiece>
+ 000366: 41 07                      | i32.const 7
+ 000368: 41 00                      | i32.const 0
+ 00036a: 23 01                      | global.get 1
+ 00036c: 10 0d                      | call 13 <setPiece>
+ 00036e: 41 00                      | i32.const 0
+ 000370: 41 01                      | i32.const 1
+ 000372: 23 01                      | global.get 1
+ 000374: 10 0d                      | call 13 <setPiece>
+ 000376: 41 02                      | i32.const 2
+ 000378: 41 01                      | i32.const 1
+ 00037a: 23 01                      | global.get 1
+ 00037c: 10 0d                      | call 13 <setPiece>
+ 00037e: 41 04                      | i32.const 4
+ 000380: 41 01                      | i32.const 1
+ 000382: 23 01                      | global.get 1
+ 000384: 10 0d                      | call 13 <setPiece>
+ 000386: 41 06                      | i32.const 6
+ 000388: 41 01                      | i32.const 1
+ 00038a: 23 01                      | global.get 1
+ 00038c: 10 0d                      | call 13 <setPiece>
+ 00038e: 41 01                      | i32.const 1
+ 000390: 41 02                      | i32.const 2
+ 000392: 23 01                      | global.get 1
+ 000394: 10 0d                      | call 13 <setPiece>
+ 000396: 41 03                      | i32.const 3
+ 000398: 41 02                      | i32.const 2
+ 00039a: 23 01                      | global.get 1
+ 00039c: 10 0d                      | call 13 <setPiece>
+ 00039e: 41 05                      | i32.const 5
+ 0003a0: 41 02                      | i32.const 2
+ 0003a2: 23 01                      | global.get 1
+ 0003a4: 10 0d                      | call 13 <setPiece>
+ 0003a6: 41 07                      | i32.const 7
+ 0003a8: 41 02                      | i32.const 2
+ 0003aa: 23 01                      | global.get 1
+ 0003ac: 10 0d                      | call 13 <setPiece>
+ 0003ae: 41 00                      | i32.const 0
+ 0003b0: 41 05                      | i32.const 5
+ 0003b2: 23 00                      | global.get 0
+ 0003b4: 10 0d                      | call 13 <setPiece>
+ 0003b6: 41 02                      | i32.const 2
+ 0003b8: 41 05                      | i32.const 5
+ 0003ba: 23 00                      | global.get 0
+ 0003bc: 10 0d                      | call 13 <setPiece>
+ 0003be: 41 04                      | i32.const 4
+ 0003c0: 41 05                      | i32.const 5
+ 0003c2: 23 00                      | global.get 0
+ 0003c4: 10 0d                      | call 13 <setPiece>
+ 0003c6: 41 06                      | i32.const 6
+ 0003c8: 41 05                      | i32.const 5
+ 0003ca: 23 00                      | global.get 0
+ 0003cc: 10 0d                      | call 13 <setPiece>
+ 0003ce: 41 01                      | i32.const 1
+ 0003d0: 41 06                      | i32.const 6
+ 0003d2: 23 00                      | global.get 0
+ 0003d4: 10 0d                      | call 13 <setPiece>
+ 0003d6: 41 03                      | i32.const 3
+ 0003d8: 41 06                      | i32.const 6
+ 0003da: 23 00                      | global.get 0
+ 0003dc: 10 0d                      | call 13 <setPiece>
+ 0003de: 41 05                      | i32.const 5
+ 0003e0: 41 06                      | i32.const 6
+ 0003e2: 23 00                      | global.get 0
+ 0003e4: 10 0d                      | call 13 <setPiece>
+ 0003e6: 41 07                      | i32.const 7
+ 0003e8: 41 06                      | i32.const 6
+ 0003ea: 23 00                      | global.get 0
+ 0003ec: 10 0d                      | call 13 <setPiece>
+ 0003ee: 41 00                      | i32.const 0
+ 0003f0: 41 07                      | i32.const 7
+ 0003f2: 23 00                      | global.get 0
+ 0003f4: 10 0d                      | call 13 <setPiece>
+ 0003f6: 41 02                      | i32.const 2
+ 0003f8: 41 07                      | i32.const 7
+ 0003fa: 23 00                      | global.get 0
+ 0003fc: 10 0d                      | call 13 <setPiece>
+ 0003fe: 41 04                      | i32.const 4
+ 000400: 41 07                      | i32.const 7
+ 000402: 23 00                      | global.get 0
+ 000404: 10 0d                      | call 13 <setPiece>
+ 000406: 41 06                      | i32.const 6
+ 000408: 41 07                      | i32.const 7
+ 00040a: 23 00                      | global.get 0
+ 00040c: 10 0d                      | call 13 <setPiece>
+ 00040e: 23 00                      | global.get 0
+ 000410: 10 0b                      | call 11 <setTurnOwner>
+ 000412: 0b                         | end
 
 Contents of section Type:
-000000a: 0460 027f 7f01 7f60 017f 017f 6003 7f7f  .`.....`....`...
-000001a: 7f00 6003 7f7f 7f01 7f                   ..`......
+000000a: 0a60 047f 7f7f 7f00 6002 7f7f 0060 027f  .`......`....`..
+000001a: 7f01 7f60 017f 017f 6000 017f 6000 0060  ...`....`...`..`
+000002a: 017f 0060 037f 7f7f 0060 037f 7f7f 017f  ...`.....`......
+000003a: 6004 7f7f 7f7f 017f                      `.......
+
+Contents of section Import:
+0000044: 0206 6576 656e 7473 0a70 6965 6365 6d6f  ..events.piecemo
+0000054: 7665 6400 0006 6576 656e 7473 0c70 6965  ved...events.pie
+0000064: 6365 6372 6f77 6e65 6400 01              cecrowned..
 
 Contents of section Function:
-0000025: 0a00 0001 0101 0101 0200 03              ...........
+0000071: 1602 0203 0303 0303 0405 0603 0702 0809  ................
+0000081: 0209 0902 0102 05                        .......
 
 Contents of section Memory:
-0000032: 0100 01                                  ...
+000008a: 0100 01                                  ...
 
 Contents of section Global:
-0000037: 037f 0041 010b 7f00 4102 0b7f 0041 040b  ...A....A....A..
+000008f: 047f 0041 010b 7f00 4102 0b7f 0041 040b  ...A....A....A..
+000009f: 7f01 4100 0b                             ..A..
 
 Contents of section Export:
-0000049: 0910 696e 6465 7846 6f72 506f 7369 7469  ..indexForPositi
-0000059: 6f6e 0000 116f 6666 7365 7446 6f72 506f  on...offsetForPo
-0000069: 7369 7469 6f6e 0001 0969 7343 726f 776e  sition...isCrown
-0000079: 6564 0002 0769 7357 6869 7465 0003 0769  ed...isWhite...i
-0000089: 7342 6c61 636b 0004 0977 6974 6843 726f  sBlack...withCro
-0000099: 776e 0005 0c77 6974 686f 7574 4372 6f77  wn...withoutCrow
-00000a9: 6e00 0608 7365 7450 6965 6365 0007 0867  n...setPiece...g
-00000b9: 6574 5069 6563 6500 08                   etPiece..
+00000a7: 1310 696e 6465 7846 6f72 506f 7369 7469  ..indexForPositi
+00000b7: 6f6e 0002 116f 6666 7365 7446 6f72 506f  on...offsetForPo
+00000c7: 7369 7469 6f6e 0003 0969 7343 726f 776e  sition...isCrown
+00000d7: 6564 0004 0769 7357 6869 7465 0005 0769  ed...isWhite...i
+00000e7: 7342 6c61 636b 0006 0977 6974 6843 726f  sBlack...withCro
+00000f7: 776e 0007 0c77 6974 686f 7574 4372 6f77  wn...withoutCrow
+0000107: 6e00 080c 6765 7454 7572 6e4f 776e 6572  n...getTurnOwner
+0000117: 0009 0f74 6f67 676c 6554 7572 6e4f 776e  ...toggleTurnOwn
+0000127: 6572 000a 0c73 6574 5475 726e 4f77 6e65  er...setTurnOwne
+0000137: 7200 0b0d 6973 506c 6179 6572 7354 7572  r...isPlayersTur
+0000147: 6e00 0c08 7365 7450 6965 6365 000d 0867  n...setPiece...g
+0000157: 6574 5069 6563 6500 0e04 6d6f 7665 0012  etPiece...move..
+0000167: 0b73 686f 756c 6443 726f 776e 0014 0a63  .shouldCrown...c
+0000177: 726f 776e 5069 6563 6500 1508 6469 7374  rownPiece...dist
+0000187: 616e 6365 0016 0969 6e69 7442 6f61 7264  ance...initBoard
+0000197: 0017 066d 656d 6f72 7902 00              ...memory..
 
 Contents of section Code:
-00000c5: 0a0a 0041 0820 016c 2000 6a0b 0b00 2000  ...A. .l .j... .
-00000d5: 2001 1000 4104 6c0b 0a00 2000 2302 7123   ...A.l... .#.q#
-00000e5: 0246 0b0a 0020 0023 0171 2301 460b 0a00  .F... .#.q#.F...
-00000f5: 2000 2300 7123 0046 0b07 0020 0023 0272   .#.q#.F... .#.r
-0000105: 0b07 0020 0023 0271 0b0d 0020 0020 0110  ... .#.q... . ..
-0000115: 0120 0236 0200 0b24 0002 7f41 0041 0720  . .6...$...A.A. 
-0000125: 0010 0941 0041 0720 0110 0971 0b04 7f20  ...A.A. ...q... 
-0000135: 0020 0110 0128 0200 0500 0b0b 0d00 2002  . ...(........ .
-0000145: 2000 4e20 0220 014c 710b                  .N . .Lq.
+00001a5: 160a 0041 0820 016c 2000 6a0b 0b00 2000  ...A. .l .j... .
+00001b5: 2001 1002 4104 6c0b 0a00 2000 2302 7123   ...A.l... .#.q#
+00001c5: 0246 0b0a 0020 0023 0171 2301 460b 0a00  .F... .#.q#.F...
+00001d5: 2000 2300 7123 0046 0b07 0020 0023 0272   .#.q#.F... .#.r
+00001e5: 0b07 0020 0023 0271 0b04 0023 030b 1300  ... .#.q...#....
+00001f5: 1009 4101 4604 4041 0210 0b05 4101 100b  ..A.F.@A....A...
+0000205: 0b0b 0600 2000 2403 0b0a 0020 0010 0971  .... .$.... ...q
+0000215: 4100 4a0b 0d00 2000 2001 1003 2002 3602  A.J... . ... .6.
+0000225: 000b 2400 027f 4100 4107 2000 100f 4100  ..$...A.A. ...A.
+0000235: 4107 2001 100f 710b 047f 2000 2001 1003  A. ...q... . ...
+0000245: 2802 0005 000b 0b0d 0020 0220 004e 2002  (........ . .N .
+0000255: 2001 4c71 0b30 0102 7f20 0020 0110 0e21   .Lq.0... . ...!
+0000265: 0420 0220 0310 0e21 0502 7f20 0120 0310  . . ...!... . ..
+0000275: 1120 0410 0c41 0020 0546 7171 0b04 7f41  . ...A. .Fqq...A
+0000285: 0105 4100 0b0b 2001 017f 2001 2000 4a04  ..A... ... . .J.
+0000295: 7f20 0120 0010 1605 2000 2001 1016 0b21  . . .... . ....!
+00002a5: 0220 0241 024d 0b1f 0002 7f20 0020 0120  . .A.M..... . . 
+00002b5: 0220 0310 100b 047f 2000 2001 2002 2003  . ...... . . . .
+00002c5: 1013 0541 000b 0b39 0101 7f20 0020 0110  ...A...9... . ..
+00002d5: 0e21 0410 0a20 0220 0320 0410 0d20 0020  .!... . . ... . 
+00002e5: 0141 0010 0d20 0320 0410 1404 4020 0220  .A... . ....@ . 
+00002f5: 0310 150b 2000 2001 2002 2003 1000 4101  .... . . . ...A.
+0000305: 0b1f 0020 0041 0046 2001 1005 7120 0041  ... .A.F ...q .A
+0000315: 0746 2001 1006 7172 047f 4101 0541 000b  .F ...qr..A..A..
+0000325: 0b1c 0101 7f20 0020 0110 0e21 0220 0020  ..... . ...!. . 
+0000335: 0120 0210 0710 0d20 0020 0110 010b 0700  . ..... . ......
+0000345: 2000 2001 6b0b c601 0041 0141 0023 0110   . .k....A.A.#..
+0000355: 0d41 0341 0023 0110 0d41 0541 0023 0110  .A.A.#...A.A.#..
+0000365: 0d41 0741 0023 0110 0d41 0041 0123 0110  .A.A.#...A.A.#..
+0000375: 0d41 0241 0123 0110 0d41 0441 0123 0110  .A.A.#...A.A.#..
+0000385: 0d41 0641 0123 0110 0d41 0141 0223 0110  .A.A.#...A.A.#..
+0000395: 0d41 0341 0223 0110 0d41 0541 0223 0110  .A.A.#...A.A.#..
+00003a5: 0d41 0741 0223 0110 0d41 0041 0523 0010  .A.A.#...A.A.#..
+00003b5: 0d41 0241 0523 0010 0d41 0441 0523 0010  .A.A.#...A.A.#..
+00003c5: 0d41 0641 0523 0010 0d41 0141 0623 0010  .A.A.#...A.A.#..
+00003d5: 0d41 0341 0623 0010 0d41 0541 0623 0010  .A.A.#...A.A.#..
+00003e5: 0d41 0741 0623 0010 0d41 0041 0723 0010  .A.A.#...A.A.#..
+00003f5: 0d41 0241 0723 0010 0d41 0441 0723 0010  .A.A.#...A.A.#..
+0000405: 0d41 0641 0723 0010 0d23 0010 0b0b       .A.A.#...#....

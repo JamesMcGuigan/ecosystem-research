@@ -1,6 +1,8 @@
 #!/bin/bash
 cd $(dirname $BASH_SOURCE[0]);  # cd current directory
 set -x
+
+# BUG: wasttime method of calling functions breaks when wat imports are defined
 BLACK=1
 WHITE=2
 CROWN=4

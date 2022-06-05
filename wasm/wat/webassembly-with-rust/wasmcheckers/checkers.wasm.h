@@ -25,6 +25,11 @@ typedef double f64;
 extern "C" {
 #endif
 
+
+/* import: 'events' 'piecemoved' */
+extern void (*Z_eventsZ_piecemoved)(u32, u32, u32, u32);
+/* import: 'events' 'piececrowned' */
+extern void (*Z_eventsZ_piececrowned)(u32, u32);
 void Z_checkers_init(void);
 void Z_checkers_free(void);
 
@@ -42,10 +47,30 @@ extern u32 (*Z_checkersZ_isBlack)(u32);
 extern u32 (*Z_checkersZ_withCrown)(u32);
 /* export: 'withoutCrown' */
 extern u32 (*Z_checkersZ_withoutCrown)(u32);
+/* export: 'getTurnOwner' */
+extern u32 (*Z_checkersZ_getTurnOwner)(void);
+/* export: 'toggleTurnOwner' */
+extern void (*Z_checkersZ_toggleTurnOwner)(void);
+/* export: 'setTurnOwner' */
+extern void (*Z_checkersZ_setTurnOwner)(u32);
+/* export: 'isPlayersTurn' */
+extern u32 (*Z_checkersZ_isPlayersTurn)(u32);
 /* export: 'setPiece' */
 extern void (*Z_checkersZ_setPiece)(u32, u32, u32);
 /* export: 'getPiece' */
 extern u32 (*Z_checkersZ_getPiece)(u32, u32);
+/* export: 'move' */
+extern u32 (*Z_checkersZ_move)(u32, u32, u32, u32);
+/* export: 'shouldCrown' */
+extern u32 (*Z_checkersZ_shouldCrown)(u32, u32);
+/* export: 'crownPiece' */
+extern void (*Z_checkersZ_crownPiece)(u32, u32);
+/* export: 'distance' */
+extern u32 (*Z_checkersZ_distance)(u32, u32);
+/* export: 'initBoard' */
+extern void (*Z_checkersZ_initBoard)(void);
+/* export: 'memory' */
+extern wasm_rt_memory_t (*Z_checkersZ_memory);
 
 #ifdef __cplusplus
 }

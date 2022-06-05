@@ -294,12 +294,18 @@ DEFINE_REINTERPRET(i32_reinterpret_f32, f32, u32)
 DEFINE_REINTERPRET(f64_reinterpret_i64, u64, f64)
 DEFINE_REINTERPRET(i64_reinterpret_f64, f64, u64)
 
-static u32 func_types[4];
+static u32 func_types[10];
 static void init_func_types(void) {
-  func_types[0] = wasm_rt_register_func_type(2, 1, WASM_RT_I32, WASM_RT_I32, WASM_RT_I32);
-  func_types[1] = wasm_rt_register_func_type(1, 1, WASM_RT_I32, WASM_RT_I32);
-  func_types[2] = wasm_rt_register_func_type(3, 0, WASM_RT_I32, WASM_RT_I32, WASM_RT_I32);
-  func_types[3] = wasm_rt_register_func_type(3, 1, WASM_RT_I32, WASM_RT_I32, WASM_RT_I32, WASM_RT_I32);
+  func_types[0] = wasm_rt_register_func_type(4, 0, WASM_RT_I32, WASM_RT_I32, WASM_RT_I32, WASM_RT_I32);
+  func_types[1] = wasm_rt_register_func_type(2, 0, WASM_RT_I32, WASM_RT_I32);
+  func_types[2] = wasm_rt_register_func_type(2, 1, WASM_RT_I32, WASM_RT_I32, WASM_RT_I32);
+  func_types[3] = wasm_rt_register_func_type(1, 1, WASM_RT_I32, WASM_RT_I32);
+  func_types[4] = wasm_rt_register_func_type(0, 1, WASM_RT_I32);
+  func_types[5] = wasm_rt_register_func_type(0, 0);
+  func_types[6] = wasm_rt_register_func_type(1, 0, WASM_RT_I32);
+  func_types[7] = wasm_rt_register_func_type(3, 0, WASM_RT_I32, WASM_RT_I32, WASM_RT_I32);
+  func_types[8] = wasm_rt_register_func_type(3, 1, WASM_RT_I32, WASM_RT_I32, WASM_RT_I32, WASM_RT_I32);
+  func_types[9] = wasm_rt_register_func_type(4, 1, WASM_RT_I32, WASM_RT_I32, WASM_RT_I32, WASM_RT_I32, WASM_RT_I32);
 }
 
 static u32 w2c_indexForPosition(u32, u32);
@@ -309,21 +315,35 @@ static u32 w2c_isWhite(u32);
 static u32 w2c_isBlack(u32);
 static u32 w2c_withCrown(u32);
 static u32 w2c_withoutCrown(u32);
+static u32 w2c_getTurnOwner(void);
+static void w2c_toggleTurnOwner(void);
+static void w2c_setTurnOwner(u32);
+static u32 w2c_isPlayersTurn(u32);
 static void w2c_setPiece(u32, u32, u32);
 static u32 w2c_getPiece(u32, u32);
-static u32 w2c_f9(u32, u32, u32);
+static u32 w2c_f15(u32, u32, u32);
+static u32 w2c_f16(u32, u32, u32, u32);
+static u32 w2c_f17(u32, u32);
+static u32 w2c_move(u32, u32, u32, u32);
+static u32 w2c_f19(u32, u32, u32, u32);
+static u32 w2c_shouldCrown(u32, u32);
+static void w2c_crownPiece(u32, u32);
+static u32 w2c_distance(u32, u32);
+static void w2c_initBoard(void);
 
 static u32 w2c_g0;
 static u32 w2c_g1;
 static u32 w2c_g2;
+static u32 w2c_g3;
 
 static void init_globals(void) {
   w2c_g0 = 1u;
   w2c_g1 = 2u;
   w2c_g2 = 4u;
+  w2c_g3 = 0u;
 }
 
-static wasm_rt_memory_t w2c_M0;
+static wasm_rt_memory_t w2c_memory;
 
 static u32 w2c_indexForPosition(u32 w2c_p0, u32 w2c_p1) {
   FUNC_PROLOGUE;
@@ -405,6 +425,50 @@ static u32 w2c_withoutCrown(u32 w2c_p0) {
   return w2c_i0;
 }
 
+static u32 w2c_getTurnOwner(void) {
+  FUNC_PROLOGUE;
+  u32 w2c_i0;
+  w2c_i0 = w2c_g3;
+  FUNC_EPILOGUE;
+  return w2c_i0;
+}
+
+static void w2c_toggleTurnOwner(void) {
+  FUNC_PROLOGUE;
+  u32 w2c_i0, w2c_i1;
+  w2c_i0 = w2c_getTurnOwner();
+  w2c_i1 = 1u;
+  w2c_i0 = w2c_i0 == w2c_i1;
+  if (w2c_i0) {
+    w2c_i0 = 2u;
+    w2c_setTurnOwner(w2c_i0);
+  } else {
+    w2c_i0 = 1u;
+    w2c_setTurnOwner(w2c_i0);
+  }
+  FUNC_EPILOGUE;
+}
+
+static void w2c_setTurnOwner(u32 w2c_p0) {
+  FUNC_PROLOGUE;
+  u32 w2c_i0;
+  w2c_i0 = w2c_p0;
+  w2c_g3 = w2c_i0;
+  FUNC_EPILOGUE;
+}
+
+static u32 w2c_isPlayersTurn(u32 w2c_p0) {
+  FUNC_PROLOGUE;
+  u32 w2c_i0, w2c_i1;
+  w2c_i0 = w2c_p0;
+  w2c_i1 = w2c_getTurnOwner();
+  w2c_i0 &= w2c_i1;
+  w2c_i1 = 0u;
+  w2c_i0 = (u32)((s32)w2c_i0 > (s32)w2c_i1);
+  FUNC_EPILOGUE;
+  return w2c_i0;
+}
+
 static void w2c_setPiece(u32 w2c_p0, u32 w2c_p1, u32 w2c_p2) {
   FUNC_PROLOGUE;
   u32 w2c_i0, w2c_i1;
@@ -412,7 +476,7 @@ static void w2c_setPiece(u32 w2c_p0, u32 w2c_p1, u32 w2c_p2) {
   w2c_i1 = w2c_p1;
   w2c_i0 = w2c_offsetForPosition(w2c_i0, w2c_i1);
   w2c_i1 = w2c_p2;
-  i32_store((&w2c_M0), (u64)(w2c_i0), w2c_i1);
+  i32_store((&w2c_memory), (u64)(w2c_i0), w2c_i1);
   FUNC_EPILOGUE;
 }
 
@@ -422,17 +486,17 @@ static u32 w2c_getPiece(u32 w2c_p0, u32 w2c_p1) {
   w2c_i0 = 0u;
   w2c_i1 = 7u;
   w2c_i2 = w2c_p0;
-  w2c_i0 = w2c_f9(w2c_i0, w2c_i1, w2c_i2);
+  w2c_i0 = w2c_f15(w2c_i0, w2c_i1, w2c_i2);
   w2c_i1 = 0u;
   w2c_i2 = 7u;
   w2c_i3 = w2c_p1;
-  w2c_i1 = w2c_f9(w2c_i1, w2c_i2, w2c_i3);
+  w2c_i1 = w2c_f15(w2c_i1, w2c_i2, w2c_i3);
   w2c_i0 &= w2c_i1;
   if (w2c_i0) {
     w2c_i0 = w2c_p0;
     w2c_i1 = w2c_p1;
     w2c_i0 = w2c_offsetForPosition(w2c_i0, w2c_i1);
-    w2c_i0 = i32_load((&w2c_M0), (u64)(w2c_i0));
+    w2c_i0 = i32_load((&w2c_memory), (u64)(w2c_i0));
   } else {
     UNREACHABLE;
   }
@@ -440,7 +504,7 @@ static u32 w2c_getPiece(u32 w2c_p0, u32 w2c_p1) {
   return w2c_i0;
 }
 
-static u32 w2c_f9(u32 w2c_p0, u32 w2c_p1, u32 w2c_p2) {
+static u32 w2c_f15(u32 w2c_p0, u32 w2c_p1, u32 w2c_p2) {
   FUNC_PROLOGUE;
   u32 w2c_i0, w2c_i1, w2c_i2;
   w2c_i0 = w2c_p2;
@@ -454,9 +518,278 @@ static u32 w2c_f9(u32 w2c_p0, u32 w2c_p1, u32 w2c_p2) {
   return w2c_i0;
 }
 
+static u32 w2c_f16(u32 w2c_p0, u32 w2c_p1, u32 w2c_p2, u32 w2c_p3) {
+  u32 w2c_l4 = 0, w2c_l5 = 0;
+  FUNC_PROLOGUE;
+  u32 w2c_i0, w2c_i1, w2c_i2, w2c_i3;
+  w2c_i0 = w2c_p0;
+  w2c_i1 = w2c_p1;
+  w2c_i0 = w2c_getPiece(w2c_i0, w2c_i1);
+  w2c_l4 = w2c_i0;
+  w2c_i0 = w2c_p2;
+  w2c_i1 = w2c_p3;
+  w2c_i0 = w2c_getPiece(w2c_i0, w2c_i1);
+  w2c_l5 = w2c_i0;
+  w2c_i0 = w2c_p1;
+  w2c_i1 = w2c_p3;
+  w2c_i0 = w2c_f17(w2c_i0, w2c_i1);
+  w2c_i1 = w2c_l4;
+  w2c_i1 = w2c_isPlayersTurn(w2c_i1);
+  w2c_i2 = 0u;
+  w2c_i3 = w2c_l5;
+  w2c_i2 = w2c_i2 == w2c_i3;
+  w2c_i1 &= w2c_i2;
+  w2c_i0 &= w2c_i1;
+  if (w2c_i0) {
+    w2c_i0 = 1u;
+  } else {
+    w2c_i0 = 0u;
+  }
+  FUNC_EPILOGUE;
+  return w2c_i0;
+}
+
+static u32 w2c_f17(u32 w2c_p0, u32 w2c_p1) {
+  u32 w2c_l2 = 0;
+  FUNC_PROLOGUE;
+  u32 w2c_i0, w2c_i1;
+  w2c_i0 = w2c_p1;
+  w2c_i1 = w2c_p0;
+  w2c_i0 = (u32)((s32)w2c_i0 > (s32)w2c_i1);
+  if (w2c_i0) {
+    w2c_i0 = w2c_p1;
+    w2c_i1 = w2c_p0;
+    w2c_i0 = w2c_distance(w2c_i0, w2c_i1);
+  } else {
+    w2c_i0 = w2c_p0;
+    w2c_i1 = w2c_p1;
+    w2c_i0 = w2c_distance(w2c_i0, w2c_i1);
+  }
+  w2c_l2 = w2c_i0;
+  w2c_i0 = w2c_l2;
+  w2c_i1 = 2u;
+  w2c_i0 = w2c_i0 <= w2c_i1;
+  FUNC_EPILOGUE;
+  return w2c_i0;
+}
+
+static u32 w2c_move(u32 w2c_p0, u32 w2c_p1, u32 w2c_p2, u32 w2c_p3) {
+  FUNC_PROLOGUE;
+  u32 w2c_i0, w2c_i1, w2c_i2, w2c_i3;
+  w2c_i0 = w2c_p0;
+  w2c_i1 = w2c_p1;
+  w2c_i2 = w2c_p2;
+  w2c_i3 = w2c_p3;
+  w2c_i0 = w2c_f16(w2c_i0, w2c_i1, w2c_i2, w2c_i3);
+  if (w2c_i0) {
+    w2c_i0 = w2c_p0;
+    w2c_i1 = w2c_p1;
+    w2c_i2 = w2c_p2;
+    w2c_i3 = w2c_p3;
+    w2c_i0 = w2c_f19(w2c_i0, w2c_i1, w2c_i2, w2c_i3);
+  } else {
+    w2c_i0 = 0u;
+  }
+  FUNC_EPILOGUE;
+  return w2c_i0;
+}
+
+static u32 w2c_f19(u32 w2c_p0, u32 w2c_p1, u32 w2c_p2, u32 w2c_p3) {
+  u32 w2c_l4 = 0;
+  FUNC_PROLOGUE;
+  u32 w2c_i0, w2c_i1, w2c_i2, w2c_i3;
+  w2c_i0 = w2c_p0;
+  w2c_i1 = w2c_p1;
+  w2c_i0 = w2c_getPiece(w2c_i0, w2c_i1);
+  w2c_l4 = w2c_i0;
+  w2c_toggleTurnOwner();
+  w2c_i0 = w2c_p2;
+  w2c_i1 = w2c_p3;
+  w2c_i2 = w2c_l4;
+  w2c_setPiece(w2c_i0, w2c_i1, w2c_i2);
+  w2c_i0 = w2c_p0;
+  w2c_i1 = w2c_p1;
+  w2c_i2 = 0u;
+  w2c_setPiece(w2c_i0, w2c_i1, w2c_i2);
+  w2c_i0 = w2c_p3;
+  w2c_i1 = w2c_l4;
+  w2c_i0 = w2c_shouldCrown(w2c_i0, w2c_i1);
+  if (w2c_i0) {
+    w2c_i0 = w2c_p2;
+    w2c_i1 = w2c_p3;
+    w2c_crownPiece(w2c_i0, w2c_i1);
+  }
+  w2c_i0 = w2c_p0;
+  w2c_i1 = w2c_p1;
+  w2c_i2 = w2c_p2;
+  w2c_i3 = w2c_p3;
+  (*Z_eventsZ_piecemoved)(w2c_i0, w2c_i1, w2c_i2, w2c_i3);
+  w2c_i0 = 1u;
+  FUNC_EPILOGUE;
+  return w2c_i0;
+}
+
+static u32 w2c_shouldCrown(u32 w2c_p0, u32 w2c_p1) {
+  FUNC_PROLOGUE;
+  u32 w2c_i0, w2c_i1, w2c_i2;
+  w2c_i0 = w2c_p0;
+  w2c_i1 = 0u;
+  w2c_i0 = w2c_i0 == w2c_i1;
+  w2c_i1 = w2c_p1;
+  w2c_i1 = w2c_isWhite(w2c_i1);
+  w2c_i0 &= w2c_i1;
+  w2c_i1 = w2c_p0;
+  w2c_i2 = 7u;
+  w2c_i1 = w2c_i1 == w2c_i2;
+  w2c_i2 = w2c_p1;
+  w2c_i2 = w2c_isBlack(w2c_i2);
+  w2c_i1 &= w2c_i2;
+  w2c_i0 |= w2c_i1;
+  if (w2c_i0) {
+    w2c_i0 = 1u;
+  } else {
+    w2c_i0 = 0u;
+  }
+  FUNC_EPILOGUE;
+  return w2c_i0;
+}
+
+static void w2c_crownPiece(u32 w2c_p0, u32 w2c_p1) {
+  u32 w2c_l2 = 0;
+  FUNC_PROLOGUE;
+  u32 w2c_i0, w2c_i1, w2c_i2;
+  w2c_i0 = w2c_p0;
+  w2c_i1 = w2c_p1;
+  w2c_i0 = w2c_getPiece(w2c_i0, w2c_i1);
+  w2c_l2 = w2c_i0;
+  w2c_i0 = w2c_p0;
+  w2c_i1 = w2c_p1;
+  w2c_i2 = w2c_l2;
+  w2c_i2 = w2c_withCrown(w2c_i2);
+  w2c_setPiece(w2c_i0, w2c_i1, w2c_i2);
+  w2c_i0 = w2c_p0;
+  w2c_i1 = w2c_p1;
+  (*Z_eventsZ_piececrowned)(w2c_i0, w2c_i1);
+  FUNC_EPILOGUE;
+}
+
+static u32 w2c_distance(u32 w2c_p0, u32 w2c_p1) {
+  FUNC_PROLOGUE;
+  u32 w2c_i0, w2c_i1;
+  w2c_i0 = w2c_p0;
+  w2c_i1 = w2c_p1;
+  w2c_i0 -= w2c_i1;
+  FUNC_EPILOGUE;
+  return w2c_i0;
+}
+
+static void w2c_initBoard(void) {
+  FUNC_PROLOGUE;
+  u32 w2c_i0, w2c_i1, w2c_i2;
+  w2c_i0 = 1u;
+  w2c_i1 = 0u;
+  w2c_i2 = w2c_g1;
+  w2c_setPiece(w2c_i0, w2c_i1, w2c_i2);
+  w2c_i0 = 3u;
+  w2c_i1 = 0u;
+  w2c_i2 = w2c_g1;
+  w2c_setPiece(w2c_i0, w2c_i1, w2c_i2);
+  w2c_i0 = 5u;
+  w2c_i1 = 0u;
+  w2c_i2 = w2c_g1;
+  w2c_setPiece(w2c_i0, w2c_i1, w2c_i2);
+  w2c_i0 = 7u;
+  w2c_i1 = 0u;
+  w2c_i2 = w2c_g1;
+  w2c_setPiece(w2c_i0, w2c_i1, w2c_i2);
+  w2c_i0 = 0u;
+  w2c_i1 = 1u;
+  w2c_i2 = w2c_g1;
+  w2c_setPiece(w2c_i0, w2c_i1, w2c_i2);
+  w2c_i0 = 2u;
+  w2c_i1 = 1u;
+  w2c_i2 = w2c_g1;
+  w2c_setPiece(w2c_i0, w2c_i1, w2c_i2);
+  w2c_i0 = 4u;
+  w2c_i1 = 1u;
+  w2c_i2 = w2c_g1;
+  w2c_setPiece(w2c_i0, w2c_i1, w2c_i2);
+  w2c_i0 = 6u;
+  w2c_i1 = 1u;
+  w2c_i2 = w2c_g1;
+  w2c_setPiece(w2c_i0, w2c_i1, w2c_i2);
+  w2c_i0 = 1u;
+  w2c_i1 = 2u;
+  w2c_i2 = w2c_g1;
+  w2c_setPiece(w2c_i0, w2c_i1, w2c_i2);
+  w2c_i0 = 3u;
+  w2c_i1 = 2u;
+  w2c_i2 = w2c_g1;
+  w2c_setPiece(w2c_i0, w2c_i1, w2c_i2);
+  w2c_i0 = 5u;
+  w2c_i1 = 2u;
+  w2c_i2 = w2c_g1;
+  w2c_setPiece(w2c_i0, w2c_i1, w2c_i2);
+  w2c_i0 = 7u;
+  w2c_i1 = 2u;
+  w2c_i2 = w2c_g1;
+  w2c_setPiece(w2c_i0, w2c_i1, w2c_i2);
+  w2c_i0 = 0u;
+  w2c_i1 = 5u;
+  w2c_i2 = w2c_g0;
+  w2c_setPiece(w2c_i0, w2c_i1, w2c_i2);
+  w2c_i0 = 2u;
+  w2c_i1 = 5u;
+  w2c_i2 = w2c_g0;
+  w2c_setPiece(w2c_i0, w2c_i1, w2c_i2);
+  w2c_i0 = 4u;
+  w2c_i1 = 5u;
+  w2c_i2 = w2c_g0;
+  w2c_setPiece(w2c_i0, w2c_i1, w2c_i2);
+  w2c_i0 = 6u;
+  w2c_i1 = 5u;
+  w2c_i2 = w2c_g0;
+  w2c_setPiece(w2c_i0, w2c_i1, w2c_i2);
+  w2c_i0 = 1u;
+  w2c_i1 = 6u;
+  w2c_i2 = w2c_g0;
+  w2c_setPiece(w2c_i0, w2c_i1, w2c_i2);
+  w2c_i0 = 3u;
+  w2c_i1 = 6u;
+  w2c_i2 = w2c_g0;
+  w2c_setPiece(w2c_i0, w2c_i1, w2c_i2);
+  w2c_i0 = 5u;
+  w2c_i1 = 6u;
+  w2c_i2 = w2c_g0;
+  w2c_setPiece(w2c_i0, w2c_i1, w2c_i2);
+  w2c_i0 = 7u;
+  w2c_i1 = 6u;
+  w2c_i2 = w2c_g0;
+  w2c_setPiece(w2c_i0, w2c_i1, w2c_i2);
+  w2c_i0 = 0u;
+  w2c_i1 = 7u;
+  w2c_i2 = w2c_g0;
+  w2c_setPiece(w2c_i0, w2c_i1, w2c_i2);
+  w2c_i0 = 2u;
+  w2c_i1 = 7u;
+  w2c_i2 = w2c_g0;
+  w2c_setPiece(w2c_i0, w2c_i1, w2c_i2);
+  w2c_i0 = 4u;
+  w2c_i1 = 7u;
+  w2c_i2 = w2c_g0;
+  w2c_setPiece(w2c_i0, w2c_i1, w2c_i2);
+  w2c_i0 = 6u;
+  w2c_i1 = 7u;
+  w2c_i2 = w2c_g0;
+  w2c_setPiece(w2c_i0, w2c_i1, w2c_i2);
+  w2c_i0 = w2c_g0;
+  w2c_setTurnOwner(w2c_i0);
+  FUNC_EPILOGUE;
+}
+
 
 static void init_memory(void) {
-  wasm_rt_allocate_memory((&w2c_M0), 1, 65536);
+  wasm_rt_allocate_memory((&w2c_memory), 1, 65536);
 }
 
 static void init_table(void) {
@@ -477,10 +810,30 @@ u32 (*Z_checkersZ_isBlack)(u32);
 u32 (*Z_checkersZ_withCrown)(u32);
 /* export: 'withoutCrown' */
 u32 (*Z_checkersZ_withoutCrown)(u32);
+/* export: 'getTurnOwner' */
+u32 (*Z_checkersZ_getTurnOwner)(void);
+/* export: 'toggleTurnOwner' */
+void (*Z_checkersZ_toggleTurnOwner)(void);
+/* export: 'setTurnOwner' */
+void (*Z_checkersZ_setTurnOwner)(u32);
+/* export: 'isPlayersTurn' */
+u32 (*Z_checkersZ_isPlayersTurn)(u32);
 /* export: 'setPiece' */
 void (*Z_checkersZ_setPiece)(u32, u32, u32);
 /* export: 'getPiece' */
 u32 (*Z_checkersZ_getPiece)(u32, u32);
+/* export: 'move' */
+u32 (*Z_checkersZ_move)(u32, u32, u32, u32);
+/* export: 'shouldCrown' */
+u32 (*Z_checkersZ_shouldCrown)(u32, u32);
+/* export: 'crownPiece' */
+void (*Z_checkersZ_crownPiece)(u32, u32);
+/* export: 'distance' */
+u32 (*Z_checkersZ_distance)(u32, u32);
+/* export: 'initBoard' */
+void (*Z_checkersZ_initBoard)(void);
+/* export: 'memory' */
+wasm_rt_memory_t (*Z_checkersZ_memory);
 
 static void init_exports(void) {
   /* export: 'indexForPosition' */
@@ -497,10 +850,30 @@ static void init_exports(void) {
   Z_checkersZ_withCrown = (&w2c_withCrown);
   /* export: 'withoutCrown' */
   Z_checkersZ_withoutCrown = (&w2c_withoutCrown);
+  /* export: 'getTurnOwner' */
+  Z_checkersZ_getTurnOwner = (&w2c_getTurnOwner);
+  /* export: 'toggleTurnOwner' */
+  Z_checkersZ_toggleTurnOwner = (&w2c_toggleTurnOwner);
+  /* export: 'setTurnOwner' */
+  Z_checkersZ_setTurnOwner = (&w2c_setTurnOwner);
+  /* export: 'isPlayersTurn' */
+  Z_checkersZ_isPlayersTurn = (&w2c_isPlayersTurn);
   /* export: 'setPiece' */
   Z_checkersZ_setPiece = (&w2c_setPiece);
   /* export: 'getPiece' */
   Z_checkersZ_getPiece = (&w2c_getPiece);
+  /* export: 'move' */
+  Z_checkersZ_move = (&w2c_move);
+  /* export: 'shouldCrown' */
+  Z_checkersZ_shouldCrown = (&w2c_shouldCrown);
+  /* export: 'crownPiece' */
+  Z_checkersZ_crownPiece = (&w2c_crownPiece);
+  /* export: 'distance' */
+  Z_checkersZ_distance = (&w2c_distance);
+  /* export: 'initBoard' */
+  Z_checkersZ_initBoard = (&w2c_initBoard);
+  /* export: 'memory' */
+  Z_checkersZ_memory = (&w2c_memory);
 }
 
 void Z_checkers_init(void) {
@@ -512,5 +885,5 @@ void Z_checkers_init(void) {
 }
 
 void Z_checkers_free(void) {
-  wasm_rt_free_memory((&w2c_M0));
+  wasm_rt_free_memory((&w2c_memory));
 }

@@ -1,8 +1,9 @@
 #!/usr/bin/env bats
+# BUG: wasttime method of calling functions breaks when wat imports are defined
+
 BLACK=1
 WHITE=2
 CROWN=4
-
 
 
 #### Coords
@@ -64,6 +65,7 @@ CROWN=4
 
 
 #### Manipulating the Board
+
 setPieceEqualsGetPiace() {
   local -r x="$1"
   local -r y="$2"
