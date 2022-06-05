@@ -294,15 +294,28 @@ DEFINE_REINTERPRET(i32_reinterpret_f32, f32, u32)
 DEFINE_REINTERPRET(f64_reinterpret_i64, u64, f64)
 DEFINE_REINTERPRET(i64_reinterpret_f64, f64, u64)
 
-static u32 func_types[1];
+static u32 func_types[2];
 static void init_func_types(void) {
   func_types[0] = wasm_rt_register_func_type(2, 1, WASM_RT_I32, WASM_RT_I32, WASM_RT_I32);
+  func_types[1] = wasm_rt_register_func_type(1, 1, WASM_RT_I32, WASM_RT_I32);
 }
 
 static u32 w2c_indexForPosition(u32, u32);
 static u32 w2c_offsetForPosition(u32, u32);
+static u32 w2c_isCrowned(u32);
+static u32 w2c_isWhite(u32);
+static u32 w2c_isBlack(u32);
+static u32 w2c_withCrown(u32);
+static u32 w2c_withoutCrown(u32);
+
+static u32 w2c_g0;
+static u32 w2c_g1;
+static u32 w2c_g2;
 
 static void init_globals(void) {
+  w2c_g0 = 1u;
+  w2c_g1 = 2u;
+  w2c_g2 = 4u;
 }
 
 static wasm_rt_memory_t w2c_M0;
@@ -331,6 +344,62 @@ static u32 w2c_offsetForPosition(u32 w2c_p0, u32 w2c_p1) {
   return w2c_i0;
 }
 
+static u32 w2c_isCrowned(u32 w2c_p0) {
+  FUNC_PROLOGUE;
+  u32 w2c_i0, w2c_i1;
+  w2c_i0 = w2c_p0;
+  w2c_i1 = w2c_g2;
+  w2c_i0 &= w2c_i1;
+  w2c_i1 = w2c_g2;
+  w2c_i0 = w2c_i0 == w2c_i1;
+  FUNC_EPILOGUE;
+  return w2c_i0;
+}
+
+static u32 w2c_isWhite(u32 w2c_p0) {
+  FUNC_PROLOGUE;
+  u32 w2c_i0, w2c_i1;
+  w2c_i0 = w2c_p0;
+  w2c_i1 = w2c_g1;
+  w2c_i0 &= w2c_i1;
+  w2c_i1 = w2c_g1;
+  w2c_i0 = w2c_i0 == w2c_i1;
+  FUNC_EPILOGUE;
+  return w2c_i0;
+}
+
+static u32 w2c_isBlack(u32 w2c_p0) {
+  FUNC_PROLOGUE;
+  u32 w2c_i0, w2c_i1;
+  w2c_i0 = w2c_p0;
+  w2c_i1 = w2c_g0;
+  w2c_i0 &= w2c_i1;
+  w2c_i1 = w2c_g0;
+  w2c_i0 = w2c_i0 == w2c_i1;
+  FUNC_EPILOGUE;
+  return w2c_i0;
+}
+
+static u32 w2c_withCrown(u32 w2c_p0) {
+  FUNC_PROLOGUE;
+  u32 w2c_i0, w2c_i1;
+  w2c_i0 = w2c_p0;
+  w2c_i1 = w2c_g2;
+  w2c_i0 |= w2c_i1;
+  FUNC_EPILOGUE;
+  return w2c_i0;
+}
+
+static u32 w2c_withoutCrown(u32 w2c_p0) {
+  FUNC_PROLOGUE;
+  u32 w2c_i0, w2c_i1;
+  w2c_i0 = w2c_p0;
+  w2c_i1 = w2c_g2;
+  w2c_i0 &= w2c_i1;
+  FUNC_EPILOGUE;
+  return w2c_i0;
+}
+
 
 static void init_memory(void) {
   wasm_rt_allocate_memory((&w2c_M0), 1, 65536);
@@ -344,12 +413,32 @@ static void init_table(void) {
 u32 (*Z_checkersZ_indexForPosition)(u32, u32);
 /* export: 'offsetForPosition' */
 u32 (*Z_checkersZ_offsetForPosition)(u32, u32);
+/* export: 'isCrowned' */
+u32 (*Z_checkersZ_isCrowned)(u32);
+/* export: 'isWhite' */
+u32 (*Z_checkersZ_isWhite)(u32);
+/* export: 'isBlack' */
+u32 (*Z_checkersZ_isBlack)(u32);
+/* export: 'withCrown' */
+u32 (*Z_checkersZ_withCrown)(u32);
+/* export: 'withoutCrown' */
+u32 (*Z_checkersZ_withoutCrown)(u32);
 
 static void init_exports(void) {
   /* export: 'indexForPosition' */
   Z_checkersZ_indexForPosition = (&w2c_indexForPosition);
   /* export: 'offsetForPosition' */
   Z_checkersZ_offsetForPosition = (&w2c_offsetForPosition);
+  /* export: 'isCrowned' */
+  Z_checkersZ_isCrowned = (&w2c_isCrowned);
+  /* export: 'isWhite' */
+  Z_checkersZ_isWhite = (&w2c_isWhite);
+  /* export: 'isBlack' */
+  Z_checkersZ_isBlack = (&w2c_isBlack);
+  /* export: 'withCrown' */
+  Z_checkersZ_withCrown = (&w2c_withCrown);
+  /* export: 'withoutCrown' */
+  Z_checkersZ_withoutCrown = (&w2c_withoutCrown);
 }
 
 void Z_checkers_init(void) {

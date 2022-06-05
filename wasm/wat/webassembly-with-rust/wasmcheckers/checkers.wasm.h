@@ -32,6 +32,16 @@ void Z_checkers_free(void);
 extern u32 (*Z_checkersZ_indexForPosition)(u32, u32);
 /* export: 'offsetForPosition' */
 extern u32 (*Z_checkersZ_offsetForPosition)(u32, u32);
+/* export: 'isCrowned' */
+extern u32 (*Z_checkersZ_isCrowned)(u32);
+/* export: 'isWhite' */
+extern u32 (*Z_checkersZ_isWhite)(u32);
+/* export: 'isBlack' */
+extern u32 (*Z_checkersZ_isBlack)(u32);
+/* export: 'withCrown' */
+extern u32 (*Z_checkersZ_withCrown)(u32);
+/* export: 'withoutCrown' */
+extern u32 (*Z_checkersZ_withoutCrown)(u32);
 
 #ifdef __cplusplus
 }

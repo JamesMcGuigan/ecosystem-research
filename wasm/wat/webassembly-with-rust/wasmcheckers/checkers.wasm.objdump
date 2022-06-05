@@ -3,59 +3,121 @@ checkers.wasm:	file format wasm 0x1
 
 Sections:
 
-     Type start=0x0000000a end=0x00000011 (size=0x00000007) count: 1
- Function start=0x00000013 end=0x00000016 (size=0x00000003) count: 2
-   Memory start=0x00000018 end=0x0000001b (size=0x00000003) count: 1
-   Export start=0x0000001d end=0x00000045 (size=0x00000028) count: 2
-     Code start=0x00000047 end=0x0000005f (size=0x00000018) count: 2
+     Type start=0x0000000a end=0x00000016 (size=0x0000000c) count: 2
+ Function start=0x00000018 end=0x00000020 (size=0x00000008) count: 7
+   Memory start=0x00000022 end=0x00000025 (size=0x00000003) count: 1
+   Global start=0x00000027 end=0x00000037 (size=0x00000010) count: 3
+   Export start=0x00000039 end=0x0000009c (size=0x00000063) count: 7
+     Code start=0x0000009e end=0x000000e7 (size=0x00000049) count: 7
 
 Section Details:
 
-Type[1]:
+Type[2]:
  - type[0] (i32, i32) -> i32
-Function[2]:
+ - type[1] (i32) -> i32
+Function[7]:
  - func[0] sig=0 <indexForPosition>
  - func[1] sig=0 <offsetForPosition>
+ - func[2] sig=1 <isCrowned>
+ - func[3] sig=1 <isWhite>
+ - func[4] sig=1 <isBlack>
+ - func[5] sig=1 <withCrown>
+ - func[6] sig=1 <withoutCrown>
 Memory[1]:
  - memory[0] pages: initial=1
-Export[2]:
+Global[3]:
+ - global[0] i32 mutable=0 - init i32=1
+ - global[1] i32 mutable=0 - init i32=2
+ - global[2] i32 mutable=0 - init i32=4
+Export[7]:
  - func[0] <indexForPosition> -> "indexForPosition"
  - func[1] <offsetForPosition> -> "offsetForPosition"
-Code[2]:
+ - func[2] <isCrowned> -> "isCrowned"
+ - func[3] <isWhite> -> "isWhite"
+ - func[4] <isBlack> -> "isBlack"
+ - func[5] <withCrown> -> "withCrown"
+ - func[6] <withoutCrown> -> "withoutCrown"
+Code[7]:
  - func[0] size=10 <indexForPosition>
  - func[1] size=11 <offsetForPosition>
+ - func[2] size=10 <isCrowned>
+ - func[3] size=10 <isWhite>
+ - func[4] size=10 <isBlack>
+ - func[5] size=7 <withCrown>
+ - func[6] size=7 <withoutCrown>
 
 Code Disassembly:
 
-000049 func[0] <indexForPosition>:
- 00004a: 41 08                      | i32.const 8
- 00004c: 20 01                      | local.get 1
- 00004e: 6c                         | i32.mul
- 00004f: 20 00                      | local.get 0
- 000051: 6a                         | i32.add
- 000052: 0b                         | end
-000054 func[1] <offsetForPosition>:
- 000055: 20 00                      | local.get 0
- 000057: 20 01                      | local.get 1
- 000059: 10 00                      | call 0 <indexForPosition>
- 00005b: 41 04                      | i32.const 4
- 00005d: 6c                         | i32.mul
- 00005e: 0b                         | end
+0000a0 func[0] <indexForPosition>:
+ 0000a1: 41 08                      | i32.const 8
+ 0000a3: 20 01                      | local.get 1
+ 0000a5: 6c                         | i32.mul
+ 0000a6: 20 00                      | local.get 0
+ 0000a8: 6a                         | i32.add
+ 0000a9: 0b                         | end
+0000ab func[1] <offsetForPosition>:
+ 0000ac: 20 00                      | local.get 0
+ 0000ae: 20 01                      | local.get 1
+ 0000b0: 10 00                      | call 0 <indexForPosition>
+ 0000b2: 41 04                      | i32.const 4
+ 0000b4: 6c                         | i32.mul
+ 0000b5: 0b                         | end
+0000b7 func[2] <isCrowned>:
+ 0000b8: 20 00                      | local.get 0
+ 0000ba: 23 02                      | global.get 2
+ 0000bc: 71                         | i32.and
+ 0000bd: 23 02                      | global.get 2
+ 0000bf: 46                         | i32.eq
+ 0000c0: 0b                         | end
+0000c2 func[3] <isWhite>:
+ 0000c3: 20 00                      | local.get 0
+ 0000c5: 23 01                      | global.get 1
+ 0000c7: 71                         | i32.and
+ 0000c8: 23 01                      | global.get 1
+ 0000ca: 46                         | i32.eq
+ 0000cb: 0b                         | end
+0000cd func[4] <isBlack>:
+ 0000ce: 20 00                      | local.get 0
+ 0000d0: 23 00                      | global.get 0
+ 0000d2: 71                         | i32.and
+ 0000d3: 23 00                      | global.get 0
+ 0000d5: 46                         | i32.eq
+ 0000d6: 0b                         | end
+0000d8 func[5] <withCrown>:
+ 0000d9: 20 00                      | local.get 0
+ 0000db: 23 02                      | global.get 2
+ 0000dd: 72                         | i32.or
+ 0000de: 0b                         | end
+0000e0 func[6] <withoutCrown>:
+ 0000e1: 20 00                      | local.get 0
+ 0000e3: 23 02                      | global.get 2
+ 0000e5: 71                         | i32.and
+ 0000e6: 0b                         | end
 
 Contents of section Type:
-000000a: 0160 027f 7f01 7f                        .`.....
+000000a: 0260 027f 7f01 7f60 017f 017f            .`.....`....
 
 Contents of section Function:
-0000013: 0200 00                                  ...
+0000018: 0700 0001 0101 0101                      ........
 
 Contents of section Memory:
-0000018: 0100 01                                  ...
+0000022: 0100 01                                  ...
+
+Contents of section Global:
+0000027: 037f 0041 010b 7f00 4102 0b7f 0041 040b  ...A....A....A..
 
 Contents of section Export:
-000001d: 0210 696e 6465 7846 6f72 506f 7369 7469  ..indexForPositi
-000002d: 6f6e 0000 116f 6666 7365 7446 6f72 506f  on...offsetForPo
-000003d: 7369 7469 6f6e 0001                      sition..
+0000039: 0710 696e 6465 7846 6f72 506f 7369 7469  ..indexForPositi
+0000049: 6f6e 0000 116f 6666 7365 7446 6f72 506f  on...offsetForPo
+0000059: 7369 7469 6f6e 0001 0969 7343 726f 776e  sition...isCrown
+0000069: 6564 0002 0769 7357 6869 7465 0003 0769  ed...isWhite...i
+0000079: 7342 6c61 636b 0004 0977 6974 6843 726f  sBlack...withCro
+0000089: 776e 0005 0c77 6974 686f 7574 4372 6f77  wn...withoutCrow
+0000099: 6e00 06                                  n..
 
 Contents of section Code:
-0000047: 020a 0041 0820 016c 2000 6a0b 0b00 2000  ...A. .l .j... .
-0000057: 2001 1000 4104 6c0b                       ...A.l.
+000009e: 070a 0041 0820 016c 2000 6a0b 0b00 2000  ...A. .l .j... .
+00000ae: 2001 1000 4104 6c0b 0a00 2000 2302 7123   ...A.l... .#.q#
+00000be: 0246 0b0a 0020 0023 0171 2301 460b 0a00  .F... .#.q#.F...
+00000ce: 2000 2300 7123 0046 0b07 0020 0023 0272   .#.q#.F... .#.r
+00000de: 0b07 0020 0023 0271 0b                   ... .#.q.
