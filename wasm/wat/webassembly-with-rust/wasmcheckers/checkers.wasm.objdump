@@ -1,0 +1,17 @@
+
+checkers.wasm:	file format wasm 0x1
+
+Sections:
+
+   Memory start=0x0000000a end=0x0000000d (size=0x00000003) count: 1
+
+Section Details:
+
+Memory[1]:
+ - memory[0] pages: initial=1
+
+Code Disassembly:
+
+
+Contents of section Memory:
+000000a: 0100 01                                  ...
