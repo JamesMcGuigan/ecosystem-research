@@ -3,15 +3,50 @@ checkers.wasm:	file format wasm 0x1
 
 Sections:
 
-   Memory start=0x0000000a end=0x0000000d (size=0x00000003) count: 1
+     Type start=0x0000000a end=0x00000011 (size=0x00000007) count: 1
+ Function start=0x00000013 end=0x00000016 (size=0x00000003) count: 2
+   Memory start=0x00000018 end=0x0000001b (size=0x00000003) count: 1
+     Code start=0x0000001d end=0x00000035 (size=0x00000018) count: 2
 
 Section Details:
 
+Type[1]:
+ - type[0] (i32, i32) -> i32
+Function[2]:
+ - func[0] sig=0
+ - func[1] sig=0
 Memory[1]:
  - memory[0] pages: initial=1
+Code[2]:
+ - func[0] size=10
+ - func[1] size=11
 
 Code Disassembly:
 
+00001f func[0]:
+ 000020: 41 08                      | i32.const 8
+ 000022: 20 01                      | local.get 1
+ 000024: 6c                         | i32.mul
+ 000025: 20 00                      | local.get 0
+ 000027: 6a                         | i32.add
+ 000028: 0b                         | end
+00002a func[1]:
+ 00002b: 20 00                      | local.get 0
+ 00002d: 20 01                      | local.get 1
+ 00002f: 10 00                      | call 0
+ 000031: 41 04                      | i32.const 4
+ 000033: 6c                         | i32.mul
+ 000034: 0b                         | end
+
+Contents of section Type:
+000000a: 0160 027f 7f01 7f                        .`.....
+
+Contents of section Function:
+0000013: 0200 00                                  ...
 
 Contents of section Memory:
-000000a: 0100 01                                  ...
+0000018: 0100 01                                  ...
+
+Contents of section Code:
+000001d: 020a 0041 0820 016c 2000 6a0b 0b00 2000  ...A. .l .j... .
+000002d: 2001 1000 4104 6c0b                       ...A.l.
