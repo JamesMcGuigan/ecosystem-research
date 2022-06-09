@@ -6,3 +6,7 @@ edition = "2021"
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 
 [dependencies]
+stdweb="0.4.20"
+# yew="0.18.0"          # ConsoleService removed in v0.19.x https://yew.rs/docs/next/migration-guides/yew/from-0_18_0-to-0_19_0
+yew="0.4.0"             # version used in book
+# gloo-console="0.2.1"  # Replacement for ConsoleService
