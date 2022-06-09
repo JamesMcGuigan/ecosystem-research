@@ -1,53 +1,56 @@
-use yew::html;
-use yew::prelude::{Component, Env, Html, Renderable, ShouldRender};
-use yew::services::console::ConsoleService;
+// use yew::prelude::{Properties, Component, Context, Html, html};
+use yew::prelude::*;
+use gloo_console::log;
+use stdweb::web::Date;
 
-pub struct Model {
+#[derive(PartialEq, Properties)]
+pub struct Counter {
     value: i64
 }
+
 pub enum Msg {
     Increment,
     Decrement,
     Bulk(Vec<Msg>),
 }
-impl<C> Component<C> for Model
-    where C: AsMut<ConsoleService>
+
+impl Component for Counter
 {
     type Message = Msg;
     type Properties = ();
 
-    fn create( _: Self::Properties, _: &mut Env<C,Self>) -> Self {
-        Model { value: 0 }
+    fn create(_ctx: &Context<Self> ) -> Self {
+        Counter { value: 0 }
     }
-    fn update( &mut self, msg: Self::Message, env: &mut Env<C, Self>) -> ShouldRender {
+
+    fn update(&mut self, _ctx: &Context<Self>, msg: Self::Message) -> bool {
         match msg {
             Msg::Increment => {
                 self.value += 1;
-                env.as_mut().log("plus one");
+                log!("plus one");
             }
             Msg::Decrement => {
                 self.value -= 1;
-                env.as_mut().log("minus one");
+                log!("minus one");
             }
             Msg::Bulk(list) => for msg in list {
-                self.update(msg, env);
-                env.as_mut().log("Bulk Action");
+                self.update(_ctx, msg);
+                log!("Bulk Action");
             }
         };
         true
     }
-}
 
-impl<C> dyn Renderable<C, Model>
-    where C: AsMut<ConsoleService>
-{
-    fn view(&self) -> Html<C, Self> {
+    // BUG: expected `()`, found enum `Msg`
+    fn view(&self, _ctx: &Context<Self>) -> Html {
+        // let link = ctx.link();
+        // <button onclick={link.callback(|_| Msg::Increment)}>{ "Increment" }</button>
         html! {
             <div>
                 <nav class="menu">
-                    <button onclick=|_| Msg::Increment,>{ "Increment" }</button>
-                    <button onclick=|_| Msg::Decrement,>{ "Decrement" }</button>
-                    <button onclick=|_| Msg::Bulk(vec![Msg::Increment, Msg::Increment]),>
+                    <button onclick={|_| Msg::Increment}>{ "Increment" }</button>
+                    <button onclick={|_| Msg::Decrement}>{ "Decrement" }</button>
+                    <button onclick={|_| Msg::Bulk(vec![Msg::Increment, Msg::Increment])}>
                         { "Increment Twice" }
                     </button>
                 </nav>

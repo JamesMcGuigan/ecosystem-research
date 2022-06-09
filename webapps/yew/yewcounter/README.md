@@ -11,6 +11,6 @@ And similar Github implementations
 rustup install nightly  
 rustup default nightly
 RUSTFLAGS="-Z macro-backtrace" cargo check 
-cargo build --target=wasm32-unknown-unknown 
-cargo web start --target=wasm32-unknown-unknown 
+RUST_BACKTRACE=1 cargo web build --target=wasm32-unknown-unknown 
+RUST_BACKTRACE=1 cargo web start --target=wasm32-unknown-unknown 
 ```

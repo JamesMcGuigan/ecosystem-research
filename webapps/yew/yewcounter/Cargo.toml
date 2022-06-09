@@ -7,6 +7,5 @@ edition = "2021"
 
 [dependencies]
 stdweb="0.4.20"
-# yew="0.18.0"          # ConsoleService removed in v0.19.x https://yew.rs/docs/next/migration-guides/yew/from-0_18_0-to-0_19_0
-yew="0.4.0"             # version used in book
-# gloo-console="0.2.1"  # Replacement for ConsoleService
+yew="0.19.3"          # v0.4 used in book, ConsoleService removed in v0.19.x https://yew.rs/docs/next/migration-guides/yew/from-0_18_0-to-0_19_0
+gloo-console="0.2.1"  # Replacement for ConsoleService
