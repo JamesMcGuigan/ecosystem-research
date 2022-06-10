@@ -1,12 +1,13 @@
 // Source: https://yew.rs/docs/getting-started/build-a-sample-app
 use yew::prelude::*;
 
-pub enum Msg {
-    AddOne,
-}
-
+#[derive(PartialEq, Properties)]
 pub struct Counter {
     value: i64,
+}
+
+pub enum Msg {
+    AddOne,
 }
 
 impl Component for Counter {
