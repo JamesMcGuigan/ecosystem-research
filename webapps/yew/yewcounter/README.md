@@ -19,7 +19,9 @@ cargo install cargo-generate cargo-web
 cargo install --git https://github.com/Badel2/cargo-web cargo-web
 
 RUSTFLAGS="-Z macro-backtrace" cargo check 
-RUST_BACKTRACE=1 cargo web build --target=wasm32-unknown-unknown 
-RUST_BACKTRACE=1 cargo web start --target=wasm32-unknown-unknown
-cargo web deploy 
+# RUST_BACKTRACE=1 cargo web build --target=wasm32-unknown-unknown 
+# RUST_BACKTRACE=1 cargo web start --target=wasm32-unknown-unknown
+# cargo web deploy  # generate ./target/deploy/
+
+trunk serve --open  # Works - requires index.html
 ```
