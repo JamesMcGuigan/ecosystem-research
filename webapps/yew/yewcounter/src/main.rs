@@ -1,8 +1,9 @@
 extern crate yew;
-extern crate yewcounter;  // import lib.js
-use yewcounter::Counter;  // import ib.rs::Counter
+extern crate yewcounter;  // import lib.rs
+
+mod counter;
+use crate::counter::Counter;
 
 fn main() {
-    // yew::start_app::<Counter>();
     yew::Renderer::<Counter>::new().render();
 }
