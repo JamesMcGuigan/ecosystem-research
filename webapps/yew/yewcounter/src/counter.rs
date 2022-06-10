@@ -46,14 +46,16 @@ impl Component for Counter {
         let link = ctx.link();
         html! {
             <div class="counter">
-                <h2>{ "Counter" }</h2>
-                <nav class="menu">
-                    <button onclick={link.callback(|_| Msg::Bulk(vec![Msg::Increment, Msg::Increment, Msg::Increment]))}>{ "+3" }</button>
-                    <button onclick={link.callback(|_| Msg::Increment)}>{ "+1" }</button>
-                    <button onclick={link.callback(|_| Msg::Decrement)}>{ "-1" }</button>
-                    <button onclick={link.callback(|_| Msg::Bulk(vec![Msg::Decrement, Msg::Decrement, Msg::Decrement]))}>{ "-3" }</button>
-                </nav>
-                <p>{ self.value }</p>
+                <div class="inner">
+                    <h2>{ "Yew Counter" }</h2>
+                    <nav class="menu">
+                        <button onclick={link.callback(|_| Msg::Bulk(vec![Msg::Increment, Msg::Increment, Msg::Increment]))}>{ "+3" }</button>
+                        <button onclick={link.callback(|_| Msg::Increment)}>{ "+1" }</button>
+                        <button onclick={link.callback(|_| Msg::Decrement)}>{ "-1" }</button>
+                        <button onclick={link.callback(|_| Msg::Bulk(vec![Msg::Decrement, Msg::Decrement, Msg::Decrement]))}>{ "-3" }</button>
+                    </nav>
+                    <p class="value">{ self.value }</p>
+                </div>
             </div>
         }
     }

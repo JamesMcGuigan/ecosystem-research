@@ -10,4 +10,5 @@ version = "0.1.0"
 stdweb = "0.4.20"
 gloo-console = "0.2.1"
 yew = { git = "https://github.com/yewstack/yew/", features = ["csr"] }
-
+yew_styles = { version="0.11", features = ["navbar"]}
+stylist = "0.9"

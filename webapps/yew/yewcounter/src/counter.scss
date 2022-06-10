@@ -1,0 +1,15 @@
+.counter {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    .inner {
+        display: inline-block;
+        text-align: center;
+    }
+    .value {
+        //display: inline-block;
+        background: #ccc;
+        padding: 0.5em;
+    }
+}
