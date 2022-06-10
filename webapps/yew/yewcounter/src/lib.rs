@@ -1,61 +1,42 @@
-// use yew::prelude::{Properties, Component, Context, Html, html};
+// Source: https://yew.rs/docs/getting-started/build-a-sample-app
 use yew::prelude::*;
-use gloo_console::log;
-use stdweb::web::Date;
-
-#[derive(PartialEq, Properties)]
-pub struct Counter {
-    value: i64
-}
 
 pub enum Msg {
-    Increment,
-    Decrement,
-    Bulk(Vec<Msg>),
+    AddOne,
 }
 
-impl Component for Counter
-{
+pub struct Counter {
+    value: i64,
+}
+
+impl Component for Counter {
     type Message = Msg;
     type Properties = ();
 
-    fn create(_ctx: &Context<Self> ) -> Self {
-        Counter { value: 0 }
+    fn create(_ctx: &Context<Self>) -> Self {
+        Self {
+            value: 0,
+        }
     }
 
     fn update(&mut self, _ctx: &Context<Self>, msg: Self::Message) -> bool {
         match msg {
-            Msg::Increment => {
+            Msg::AddOne => {
                 self.value += 1;
-                log!("plus one");
+                // the value has changed so we need to
+                // re-render for it to appear on the page
+                true
             }
-            Msg::Decrement => {
-                self.value -= 1;
-                log!("minus one");
-            }
-            Msg::Bulk(list) => for msg in list {
-                self.update(_ctx, msg);
-                log!("Bulk Action");
-            }
-        };
-        true
+        }
     }
 
-    // BUG: expected `()`, found enum `Msg`
-    fn view(&self, _ctx: &Context<Self>) -> Html {
-        // let link = ctx.link();
-        // <button onclick={link.callback(|_| Msg::Increment)}>{ "Increment" }</button>
+    fn view(&self, ctx: &Context<Self>) -> Html {
+        // This gives us a component's "`Scope`" which allows us to send messages, etc to the component.
+        let link = ctx.link();
         html! {
             <div>
-                <nav class="menu">
-                    <button onclick={|_| Msg::Increment}>{ "Increment" }</button>
-                    <button onclick={|_| Msg::Decrement}>{ "Decrement" }</button>
-                    <button onclick={|_| Msg::Bulk(vec![Msg::Increment, Msg::Increment])}>
-                        { "Increment Twice" }
-                    </button>
-                </nav>
+                <button onclick={link.callback(|_| Msg::AddOne)}>{ "+1" }</button>
                 <p>{ self.value }</p>
-                <p>{ Date::new().to_string() }</p>
             </div>
         }
     }
