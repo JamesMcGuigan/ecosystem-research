@@ -1,10 +1,13 @@
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
 [package]
 name = "yewcounter"
 version = "0.1.0"
- edition = "2021"
+edition = "2021"
 #edition = "2018"
 
-# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+[lib]
+# crate-type = ["rlib", "cdylib"]  # Only required for wasm-pack
 
 [dependencies]
 stdweb = "0.4.20"
@@ -12,3 +15,5 @@ gloo-console = "0.2.1"
 yew = { git = "https://github.com/yewstack/yew/", features = ["csr"] }
 yew_styles = { version="0.11", features = ["navbar"]}
 stylist = "0.9"
+see = "0.0.8"
+# wasm-pack = "0.10.2"

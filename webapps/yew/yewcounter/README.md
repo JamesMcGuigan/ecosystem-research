@@ -7,7 +7,8 @@ Inspired by Chapter 5 of Programming WebAssembly with Rust
 And similar Github implementations
 - https://github.com/nukumalik/yew-counter/blob/main/src/main.rs
 
-```
+Install
+```bash
 rustup install nightly  
 rustup default nightly
 
@@ -17,11 +18,29 @@ cargo install cargo-generate cargo-web
 
 # BUGFIX: thread 'main' panicked at 'unknown name section chunk type: 7' | https://github.com/koute/cargo-web/issues/251
 cargo install --git https://github.com/Badel2/cargo-web cargo-web
+```
 
-RUSTFLAGS="-Z macro-backtrace" cargo check 
+Build
+```bash
+## Use Trunk - https://yew.rs/docs/getting-started/project-setup/using-trunk
+RUSTFLAGS="-Z macro-backtrace" cargo check
+trunk clean
+trunk serve --open  # Works - requires index.html
+trunk build --release
+http-server dist/               # Javascript webserver
+see start -b 8080 -p dist/      # Rust webserver
+
+
+## BROKEN: cargo build with Yew 
 # RUST_BACKTRACE=1 cargo web build --target=wasm32-unknown-unknown 
 # RUST_BACKTRACE=1 cargo web start --target=wasm32-unknown-unknown
 # cargo web deploy  # generate ./target/deploy/
 
-trunk serve --open  # Works - requires index.html
+## BROKEN: wasm-pack with Yew
+## - DOCS: https://yew.rs/docs/getting-started/project-setup/using-wasm-pack
+## - WORKING EXAMPLE: https://github.com/yewstack/yew-wasm-pack-minimal
+## - WORKING EXAMPLE: https://github.com/yewstack/yew-wasm-pack-template
+# npm install --global rollup   
+# wasm-pack build --target web
+# rollup ./main.js --format iife --file ./pkg/bundle.js
 ```
