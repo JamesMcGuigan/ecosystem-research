@@ -5,8 +5,9 @@ Hello World in Yew, inspired by:
 
 Development
 ```
+trunk clean
 trunk serve --open  # Works
-cargo web start     # Broken
+trunk build --release
 ```
 
 Production - Broken ???
