@@ -7,7 +7,7 @@ edition = "2021"  # DOCS: https://doc.rust-lang.org/edition-guide/editions/index
 
 
 [lib]
-# crate-type = ["rlib", "cdylib"]   # Only required for wasm-pack
+crate-type = ["rlib", "cdylib"]   # Only required for wasm-pack
 
 
 [dependencies]
@@ -17,8 +17,7 @@ yew = { git = "https://github.com/yewstack/yew/", features = ["csr"] }
 yew_styles = { version="0.11", features = ["navbar"]}
 stylist = "0.9"
 wee_alloc = "0.4.5"
-# see = "0.0.8"
-# wasm-pack = "0.10.2"
+grass = "0.11.0"     # cargo install grass
 
 
 # DOCS: https://yew.rs/docs/advanced-topics/optimizations

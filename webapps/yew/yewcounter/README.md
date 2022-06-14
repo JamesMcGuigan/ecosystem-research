@@ -7,6 +7,11 @@ Inspired by Chapter 5 of Programming WebAssembly with Rust
 And similar Github implementations
 - https://github.com/nukumalik/yew-counter/blob/main/src/main.rs
 
+.scss bugfix workaround:
+- `<link data-trunk rel="scss" href="src/counter.scss"/>` fails to compile
+- [./grass.sh](./grass.sh) is called as a watch/build [hook] in [Trunk.toml](Trunk.toml)
+
+
 Install
 ```bash
 rustup install nightly  
@@ -16,6 +21,7 @@ cargo install --locked trunk
 cargo install wasm-bindgen-cli
 cargo install cargo-expand
 cargo install cargo-generate cargo-web
+cargo install grass
 
 # BUGFIX: thread 'main' panicked at 'unknown name section chunk type: 7' | https://github.com/koute/cargo-web/issues/251
 cargo install --git https://github.com/Badel2/cargo-web cargo-web

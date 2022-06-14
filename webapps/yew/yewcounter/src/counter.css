@@ -1,13 +1,13 @@
 .counter {
-    display: flex;
-    justify-content: center;
-    align-items: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 .counter .inner {
-    display: inline-block;
-    text-align: center;
+  display: inline-block;
+  text-align: center;
 }
 .counter .value {
-    background: #ccc;
-    padding: 0.5em;
+  background: #ccc;
+  padding: 0.5em;
 }
