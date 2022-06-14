@@ -3,11 +3,12 @@
 [package]
 name = "yewcounter"
 version = "0.1.0"
-edition = "2021"
-#edition = "2018"
+edition = "2021"  # DOCS: https://doc.rust-lang.org/edition-guide/editions/index.html
+
 
 [lib]
-# crate-type = ["rlib", "cdylib"]  # Only required for wasm-pack
+# crate-type = ["rlib", "cdylib"]   # Only required for wasm-pack
+
 
 [dependencies]
 stdweb = "0.4.20"
@@ -15,5 +16,15 @@ gloo-console = "0.2.1"
 yew = { git = "https://github.com/yewstack/yew/", features = ["csr"] }
 yew_styles = { version="0.11", features = ["navbar"]}
 stylist = "0.9"
-see = "0.0.8"
+wee_alloc = "0.4.5"
+# see = "0.0.8"
 # wasm-pack = "0.10.2"
+
+
+# DOCS: https://yew.rs/docs/advanced-topics/optimizations
+[profile.release]
+panic = 'abort'     # less code to include into binary
+lto   = true        # link time optimization using using whole-program analysis
+codegen-units = 1   # optimization over all codebase ( better optimization, slower build )
+opt-level     = 'z' # optimization for size ( more aggressive )
+# opt-level   = 's' # optimization for size
