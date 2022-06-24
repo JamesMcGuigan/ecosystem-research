@@ -1,5 +1,5 @@
-.idea
-*.iml
 .DS_Store
 target
 nimcache
+node_modules
+venv
