@@ -14,6 +14,7 @@ mod borrowing;
 mod lifetimes;
 mod threads;
 mod option;
+mod result;
 
 fn main() {
     print::run();
@@ -23,7 +24,6 @@ fn main() {
     arrays::run();
     conditionals::run();
     loops::run();
-    option::run();
     functions::run();
     pointers::run();
     structs::run();
@@ -32,4 +32,6 @@ fn main() {
     borrowing::run();
     lifetimes::run();
     threads::run();
+    option::run();
+    result::run();
 }
