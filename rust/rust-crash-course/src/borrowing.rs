@@ -2,12 +2,14 @@
 // YouTube: https://www.youtube.com/watch?v=1QoT9fmPYr8&ab_channel=DougMilford
 
 #[derive(Debug)]  // Copy, Clone
+#[allow(dead_code)]
 struct Test {
     a: i32,
     b: f64,
 }
 
 #[derive(Debug, Copy, Clone)]
+#[allow(dead_code)]
 struct TestCopy {
     a: i32,
     b: f64,
