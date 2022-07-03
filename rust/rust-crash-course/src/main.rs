@@ -13,6 +13,7 @@ mod cli;
 mod borrowing;
 mod lifetimes;
 mod threads;
+mod option;
 
 fn main() {
     print::run();
@@ -22,6 +23,7 @@ fn main() {
     arrays::run();
     conditionals::run();
     loops::run();
+    option::run();
     functions::run();
     pointers::run();
     structs::run();
