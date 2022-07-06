@@ -1,3 +1,5 @@
+extern crate core;
+
 mod print;
 mod vars;
 mod types;
