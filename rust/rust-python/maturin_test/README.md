@@ -6,9 +6,15 @@ Install
 ```
 pip install cffi maturin 
 maturin new maturin_test  # cffi bindings are more compatable
-maturin build             # build into ./target/wheels/
-maturin develop           # build + install in local venv
-maturin publish           # publish to pypi 
+python3 -m venv venv 
+```
+
+Maturin LifeCycle
+```
+cargo clean
+maturin build   --release  # build into ./target/wheels/
+maturin develop --release  # build + install in local venv
+maturin publish --release  # publish to pypi 
 ```
 
 Buildchain
