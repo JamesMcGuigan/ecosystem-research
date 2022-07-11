@@ -15,10 +15,10 @@ use rand::Rng;
 #[derive(Clone)]
 #[allow(non_snake_case, dead_code)]
 pub struct Observation {
-    #[pyo3(get)] step: u8,
-    #[pyo3(get)] mark: u8,
-    #[pyo3(get)] board: [u8;42],
-    #[pyo3(get)] remainingOverageTime: f32,
+    #[pyo3(get)] pub step: u8,
+    #[pyo3(get)] pub mark: u8,
+    #[pyo3(get)] pub board: [u8;42],
+    #[pyo3(get)] pub remainingOverageTime: f32,
 }
 #[pymethods]
 #[allow(non_snake_case, dead_code)]
@@ -33,15 +33,15 @@ impl Observation {
 #[derive(Clone)]
 #[allow(non_snake_case, dead_code)]
 pub struct Configuration {
-    #[pyo3(get)] columns: u8,
-    #[pyo3(get)] rows: u8,
-    #[pyo3(get)] inarow: u8,
-    #[pyo3(get)] timeout: f32,
-    #[pyo3(get)] actTimeout: f32,
-    #[pyo3(get)] agentTimeout: f32,
-    #[pyo3(get)] episodeSteps: u32,
-    #[pyo3(get)] runTimeout: f32,
-    #[pyo3(get)] __raw_path__: String,
+    #[pyo3(get)] pub columns: u8,
+    #[pyo3(get)] pub rows: u8,
+    #[pyo3(get)] pub inarow: u8,
+    #[pyo3(get)] pub timeout: f32,
+    #[pyo3(get)] pub actTimeout: f32,
+    #[pyo3(get)] pub agentTimeout: f32,
+    #[pyo3(get)] pub episodeSteps: u32,
+    #[pyo3(get)] pub runTimeout: f32,
+    #[pyo3(get)] pub __raw_path__: String,
 }
 #[pymethods]
 #[allow(non_snake_case, dead_code, clippy::too_many_arguments)]
