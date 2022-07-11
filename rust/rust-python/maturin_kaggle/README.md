@@ -28,10 +28,15 @@ and accessible to a python script.
  
 ---
 
-## Links
-- DOCS: https://github.com/PyO3/maturin
-- EXAMPLE: https://github.com/deepgreenAN/pyo3_error_handling
-- KAGGLE:  https://www.kaggle.com/competitions/connectx/
+## Further Development
+
+This was the proof-of-concept code for  
+- https://github.com/JamesMcGuigan/connect4
+- https://www.kaggle.com/competitions/connectx/
+
+## DOCS
+- https://github.com/PyO3/maturin
+- https://github.com/deepgreenAN/pyo3_error_handling
 
 ## Install
 ```
