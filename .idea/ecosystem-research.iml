@@ -14,6 +14,7 @@
       <sourceFolder url="file://$MODULE_DIR$/webapps/yew/yewcounter/src" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/rust/rust-python/maturin/src" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/rust/rust-python/maturin_test/src" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/rust/maths/src" isTestSource="false" />
       <excludeFolder url="file://$MODULE_DIR$/.idea/sonarlint" />
       <excludeFolder url="file://$MODULE_DIR$/rust/hello-rust/target" />
       <excludeFolder url="file://$MODULE_DIR$/rust/rust-crash-course/target" />
@@ -26,6 +27,7 @@
       <excludeFolder url="file://$MODULE_DIR$/webapps/yew/yewcounter/target" />
       <excludeFolder url="file://$MODULE_DIR$/rust/rust-python/maturin/target" />
       <excludeFolder url="file://$MODULE_DIR$/rust/rust-python/maturin_test/target" />
+      <excludeFolder url="file://$MODULE_DIR$/rust/maths/target" />
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
