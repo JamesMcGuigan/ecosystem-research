@@ -8,3 +8,5 @@ edition = "2021"
 [dependencies]
 itertools = "0.10.3"
 cached = "0.36.0"
+spfunc = "0.1.0"
+cauchy = "0.4.0"
