@@ -3,22 +3,40 @@
 // How Many Subsets of 25 are there?
 // use std::collections::HashSet;
 use itertools::Itertools;
-use std::collections::{BTreeSet};
+use std::collections::BTreeSet;
+use std::time::Instant;
+use cached::proc_macro::cached;
+
 
 fn main() {
-    subsets(10, 10)
+    subsets(15, 15)
 }
 
+
 #[allow(non_snake_case)]
-fn subsets(range: u32, sum: u32) {
+fn subsets(max_n: u32, sum: u32) {
+    let start_time = Instant::now();
     let subsets = BTreeSet::from_iter(
-        (1..=range).flat_map(|n|
-            (1..=range).permutations(n as usize)
+        (1..=max_set_size(sum)).flat_map(|n|
+            (1..=max_n).permutations(n as usize)
         )
         .filter(|vec| vec.iter().sum::<u32>() == sum)
         .map(|vec| BTreeSet::from_iter(vec.iter().cloned()))
     );
+    let duration = (Instant::now() - start_time).as_millis();
     let count = subsets.len();
     subsets.iter().for_each(|subset| println!("{:?}", subset));
-    println!("subsets of 0..{} | sum() = {} | total = {}", range, sum, count);
+    println!("subsets of 0..{} | sum() = {} | total = {} | {}ms", max_n, sum, count, duration);
+}
+
+
+#[cached]
+fn max_set_size(sum: u32) -> u32 {
+    let mut count = 0;
+    let mut iter  = 0;
+    while count <= sum {
+        count += iter;
+        iter  += 1;
+    }
+    iter
 }
