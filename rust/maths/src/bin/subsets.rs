@@ -1,15 +1,15 @@
+use std::collections::BTreeSet;
+use std::time::Instant;
+
+use cached::proc_macro::cached;
+use itertools::Itertools;
+
 // YouTube: Olympiad level counting: How many subsets of {1,…,2000} have a sum divisible by 5?
 // - https://www.youtube.com/watch?v=bOXCLR3Wric&t=401s&ab_channel=3Blue1Brown
 // How Many Subsets of 25 are there?
-// use std::collections::HashSet;
-use itertools::Itertools;
-use std::collections::BTreeSet;
-use std::time::Instant;
-use cached::proc_macro::cached;
-
-
+// TODO: This implements sum(subset) and not modulo_sum(subset)
 fn main() {
-    subsets(15, 15)
+    subsets(15, 15)  // M1 = 62.982s debug | 2.162s release
 }
 
 

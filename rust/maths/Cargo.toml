@@ -10,4 +10,8 @@ itertools = "0.10.3"
 cached = "0.36.0"
 spfunc = "0.1.0"
 cauchy = "0.4.0"
-rug = "1.16.0"
+rug = "1.17.0"  # BUGFIX: https://gitlab.com/tspiteri/rug/-/issues/42
+num = "0.1.0"
+#num-bigint = { version = "0.4", features = ["rand"] }
+num-bigint-dig = { version = "0.8.1", features = ["prime", "u64_digit"] }
+num-traits = "0.2.15"
