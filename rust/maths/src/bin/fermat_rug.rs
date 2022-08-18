@@ -11,7 +11,6 @@ fn main() {
         // let value = Float::with_val(128, value);  // BUGFIXED: https://gitlab.com/tspiteri/rug/-/issues/42
 
         let time_taken = time_start.elapsed();
-        println!("{time_taken:?} | fermat({n}) = {is_prime:?} = {value}\n");
         println!("{time_taken:?} | rug::Integer::is_probably_prime() = {is_prime:?} | fermat({n}) = {value}\n");
     }
 }
