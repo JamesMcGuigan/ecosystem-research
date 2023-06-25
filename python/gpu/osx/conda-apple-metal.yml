@@ -1,0 +1,37 @@
+# Source: https://raw.githubusercontent.com/jeffheaton/t81_558_deep_learning/master/tensorflow-apple-metal.yml
+# DOCS: https://stackoverflow.com/questions/72964800/what-is-the-proper-way-to-install-tensorflow-on-apple-m1-in-2022
+
+# DOCS: conda env create -n metal -f conda-apple-metal.yml
+# conda list|grep -E '(tensorflow|numpy)'
+
+name: tensorflow-apple-metal
+channels:
+  - apple
+  - conda-forge
+dependencies:
+    - python
+    - pip
+
+    - boto3
+    - flask
+    - h5py
+    - ipykernel
+    - jupyter
+    - matplotlib
+    - numpy
+    - pandas
+    - pandas-datareader
+    - pillow
+    - pyyaml
+    - requests
+    - scikit-learn
+    - scipy
+    - tqdm
+
+    - pip:
+        - tensorflow-macos
+        - tensorflow-metal
+        - bayesian-optimization
+        - gym
+        - kaggle
+        - torch

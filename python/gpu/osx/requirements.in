@@ -1,0 +1,13 @@
+### pip uninstall tensorflow tensorflow-macos tensorflow-metal
+### pip-compile -vU; pip install -r requirements.txt
+### conda list|grep -E '(tensorflow|numpy)'
+
+torch
+numpy
+
+### OSX M1
+# tensorflow       # ignore on M1
+tensorflow-macos   # M1 CPU
+tensorflow-metal   # M1 GPU - causes
+tensorflow-estimator
+tensorflow-deps
