@@ -1,0 +1,4 @@
+tensorflow
+tensorrt
+nvidia-cudnn-cu11
+# torch
