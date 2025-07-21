@@ -15,6 +15,9 @@
       <sourceFolder url="file://$MODULE_DIR$/rust/rust-python/maturin/src" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/rust/rust-python/maturin_test/src" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/rust/maths/src" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/clojure" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/clojure/hello-world/src" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/clojure/hello_leiningen/src" isTestSource="false" />
       <excludeFolder url="file://$MODULE_DIR$/.idea/sonarlint" />
       <excludeFolder url="file://$MODULE_DIR$/rust/hello-rust/target" />
       <excludeFolder url="file://$MODULE_DIR$/rust/rust-crash-course/target" />
